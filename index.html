@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسياد العروش | Masters of Thrones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-feudal: #0f0806;       /* أسود فيكتوري داكن جداً */
+            --parchment: #f5ebd2;      /* لون المخطوطات الفيكتورية القديمة */
+            --royal-gold: #c5a059;     /* ذهبي عتيق */
+            --bright-gold: #f3e5ab;    /* وهج ذهبي مشع */
+            --velvet-crimson: #4a121a; /* أحمر مخملي ملكي */
+            --card-shadow: rgba(197, 160, 89, 0.15);
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            outline: none;
+        }
+
+        body {
+            background-color: var(--bg-feudal);
+            color: var(--parchment);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 30%, #251216 0%, #0f0806 70%);
+        }
+
+        h1, h2, h3, .throne-title {
+            font-family: 'Amiri', serif;
+        }
+
+        /* --- القائمة الجانبية الفيكتورية (Sidebar) ☰ --- */
+        .menu-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: var(--velvet-crimson);
+            border: 2px solid var(--royal-gold);
+            color: var(--royal-gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transition: var(--transition);
+        }
+        .menu-toggle:hover {
+            box-shadow: 0 0 20px var(--royal-gold);
+            color: var(--bright-gold);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100%;
+            background: #160c09;
+            border-left: 3px double var(--royal-gold);
+            z-index: 999;
+            padding: 90px 20px 30px 20px;
+            transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+        }
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-brand {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px dashed var(--royal-gold);
+            padding-bottom: 20px;
+        }
+        .sidebar-brand h2 {
+            color: var(--royal-gold);
+            font-size: 1.8rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--parchment);
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--velvet-crimson);
+            border-color: var(--royal-gold);
+            color: var(--bright-gold);
+            text-shadow: 0 0 10px rgba(243,229,171,0.5);
+        }
+
+        /* --- الهيدر الفخم --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 30px 20px;
+            position: relative;
+        }
+        header::after {
+            content: '❦';
+            display: block;
+            color: var(--royal-gold);
+            font-size: 2rem;
+            margin-top: 15px;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            color: var(--royal-gold);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #bfa38a;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* --- قاعة العروش الخمسة العِظام 👑 --- */
+        .thrones-container {
+            max-width: 1300px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .throne-card {
+            background: linear-gradient(145deg, #1d0f11, #130a08);
+            border: 2px solid var(--royal-gold);
+            border-radius: 8px;
+            padding: 30px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+        .throne-card::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px double rgba(197, 160, 89, 0.2);
+            pointer-events: none;
+        }
+
+        /* ألوان وهالات منفصلة وجبارة لكل عرش */
+        .t-supreme { border-color: #ffcc00; box-shadow: 0 0 20px rgba(255, 204, 0, 0.2); }
+        .t-supreme i { color: #ffcc00; text-shadow: 0 0 15px #ffcc00; }
+        
+        .t-fire { border-color: #ff4500; box-shadow: 0 0 20px rgba(255, 69, 0, 0.2); }
+        .t-fire i { color: #ff4500; text-shadow: 0 0 15px #ff4500; }
+
+        .t-water { border-color: #00ccff; box-shadow: 0 0 20px rgba(0, 204, 255, 0.2); }
+        .t-water i { color: #00ccff; text-shadow: 0 0 15px #00ccff; }
+
+        .t-air { border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        .t-air i { color: #ffffff; text-shadow: 0 0 15px #ffffff; }
+
+        .t-earth { border-color: #8b5a2b; box-shadow: 0 0 20px rgba(139, 90, 43, 0.2); }
+        .t-earth i { color: #8b5a2b; text-shadow: 0 0 15px #8b5a2b; }
+
+        .throne-card:hover {
+            transform: translateY(-10px);
+        }
+        .throne-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        .throne-card:hover .throne-icon {
+            transform: scale(1.15);
+        }
+        .throne-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--parchment);
+            margin-bottom: 5px;
+        }
+        .throne-meta {
+            font-size: 0.85rem;
+            color: var(--royal-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- المحتوى الرئيسي والأقسام --- */
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+        }
+
+        .panel-section {
+            display: none;
+        }
+        .panel-section.active {
+            display: block;
+            animation: fadeIn 0.6s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تصميم الكروت الفيكتورية القديمة */
+        .parchment-card {
+            background: #1a0f0c;
+            border: 3px double var(--royal-gold);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .parchment-card h2 {
+            color: var(--royal-gold);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .story-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            text-align: justify;
+            color: #e6dac2;
+        }
+
+        /* تنظيم عروض التفاعل والدروع */
+        .grid-subsections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+        @media (max-width: 550px) {
+            .grid-subsections { grid-template-columns: 1fr; }
+        }
+
+        .sub-box {
+            background: rgba(74, 18, 26, 0.2);
+            border: 1px solid var(--royal-gold);
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+            transition: var(--transition);
+        }
+        .sub-box:hover {
+            background: rgba(74, 18, 26, 0.35);
+            border-color: var(--bright-gold);
+        }
+        .sub-box h3 {
+            color: var(--bright-gold);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sub-box p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #dfd3ba;
+        }
+
+        /* صناديق القوانين والمعايير والتنبيهات هامة */
+        .law-box {
+            background: #241115;
+            border-right: 5px solid var(--royal-gold);
+            border-left: 1px solid rgba(197,160,89,0.3);
+            border-top: 1px solid rgba(197,160,89,0.3);
+            border-bottom: 1px solid rgba(197,160,89,0.3);
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 0 4px 4px 0;
+        }
+        .law-box h4 {
+            color: var(--royal-gold);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .law-box ul {
+            list-style-type: square;
+            padding-right: 20px;
+        }
+        .law-box li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .badge-info {
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px dashed var(--royal-gold);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-align: center;
+            color: var(--bright-gold);
+        }
+
+        /* طبقات الزخرفة الزاوية الفيكتورية */
+        .corner-decor {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid var(--royal-gold);
+        }
+        .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+        .overlay-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(3px);
+            z-index: 998;
+            display: none;
+        }
+        .overlay-bg.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <button class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="overlay-bg" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <h2>مخطوطات العروش</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="nav-link active" onclick="switchTab('main-panel', event)"><i class="fa-solid fa-scroll"></i> الشاشة الرئيسية</a></li>
+            <li><a href="#" class="nav-link" onclick="switchTab('guilds-thrones', event)"><i class="fa-solid fa-chess-king"></i> عروش النقابات</a></li>
+            <li><a href="#" class="nav-link" onclick="switchTab('members-shields', event)"><i class="fa-solid fa-shield-halved"></i> دروع الأعضاء</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>أسياد العروش</h1>
+        <p>المنافسة الكبرى والموسم الملحمي للممالك والنقابات</p>
+    </header>
+
+    <section class="thrones-container">
+        <div class="throne-card t-supreme">
+            <div class="throne-icon"><i class="fa-solid fa-crown"></i></div>
+            <div class="throne-title">العرش الأعظم</div>
+            <div class="throne-meta">أسياد العروش</div>
+        </div>
+        <div class="throne-card t-fire">
+            <div class="throne-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <div class="throne-title">العرش الناري</div>
+            <div class="throne-meta">ملك التفاعل الإجمالي</div>
+        </div>
+        <div class="throne-card t-water">
+            <div class="throne-icon"><i class="fa-solid fa-droplet"></i></div>
+            <div class="throne-title">العرش المائي</div>
+            <div class="throne-meta">ملك القروب الأساسي</div>
+        </div>
+        <div class="throne-card t-air">
+            <div class="throne-icon"><i class="fa-solid fa-wind"></i></div>
+            <div class="throne-title">العرش الهوائي</div>
+            <div class="throne-meta">ملك ساحة المعارك</div>
+        </div>
+        <div class="throne-card t-earth">
+            <div class="throne-icon"><i class="fa-solid fa-mountain"></i></div>
+            <div class="throne-title">العرش الأرضي</div>
+            <div class="throne-meta">ملك كتائب المملكة</div>
+        </div>
+    </section>
+
+    <main class="main-wrapper">
+        
+        <div id="main-panel" class="panel-section active">
+            <div class="parchment-card">
+                <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
+                <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
+                
+                <h2>شرح ميثاق موسم أسياد العروش</h2>
+                <p class="story-text">
+                    مرحباً بكم في ساحة المجد والمنافسة الشرسة. "أسياد العروش" هو موسم ملحمي استثنائي يمتد **لمدة شهر كامل**، يُقام ويُدار بالكامل على منصة **الواتساب**. هنا، تلتقي الممالك العظمى والكتائب والنقابات في صراع فكري وتفاعلي وإداري لا يرحم. طوال هذا الشهر، سيتم رصد ومراقبة وتقييم أدق التفاصيل؛ من تفاعل الأعضاء في المجموعات المختلفة، إلى حكمة القيادة، وقدرة المشرفين والوزراء والسفراء على تسيير شؤون نقاباتهم. في نهاية هذا الشهر، لن يتربع على هذه العروش المهيبة سوى من أثبت جدارته المطلقة بالسيادة والولاء والتنظيم التام.
+                </p>
+                
+                <div class="badge-info">
+                    📜 تصفح الأقسام عبر القائمة الجانبية في أعلى اليمين لاستكشاف شروط العروش ومعايير الدروع.
+                </div>
+            </div>
+        </div>
+
+        <div id="guilds-thrones" class="panel-section">
+            <div class="parchment-card">
+                <h2>عروش النقابات (عروش التفاعل)</h2>
+                <p class="story-text" style="text-align: center; margin-bottom: 30px;">
+                    الألقاب الموسمية الفاخرة الخاصة بتفاعل النقابات داخل أرجاء المملكة.
+                </p>
+
+                <div class="grid-subsections">
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-fire" style="color: #ff4500;"></i> العرش الناري</h3>
+                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر حnumericalً وحصداً للتفاعل الإجمالي في الموسم ككل.</p>
+                        <p style="margin-top: 8px; font-size: 0.95rem; color: #bfa38a;">* يعطى العرش الناري للنقابة الأعلى تفاعلاً في كل عروش التفاعل مجتمعة.</p>
+                    </div>
+
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-droplet" style="color: #00ccff;"></i> العرش المائي</h3>
+                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر تفاعلاً في **القروب الأساسي** (النقابة الأساسية).</p>
+                    </div>
+
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-wind" style="color: #ffffff;"></i> العرش الهوائي</h3>
+                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر تفاعلاً في **قروب الساحة** بالفعاليات الطويلة.</p>
+                    </div>
+
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-earth-americas" style="color: #8b5a2b;"></i> العرش الأرضي</h3>
+                        <p><strong>الهدف:</strong> يُمنح لأكثر نقابة يملك أعضاؤها تفاعلاً داخل أرجاء **كتائب المملكة**.</p>
+                    </div>
+                </div>
+
+                <div class="law-box">
+                    <h4>⚠️ شرح نظام وحظر عروش التفاعل (هام جداً):</h4>
+                    <ul>
+                        <li><strong>القروب الأساسي:</strong> يقتصر تماماً على النقاشات والأسئلة المفاجئة فقط! **يُمنع منعاً باتاً استخدام المسابقات فيه**.</li>
+                        <li><strong>قروب الساحة:</strong> هو مكان مخصص للمسابقات الطويلة والفعاليات فقط! **يُمنع منعاً باتاً فتح النقاشات والسوالف والأسئلة العادية داخله**.</li>
+                        <li><strong>نظام احتساب الكتائب:</strong> يتم حساب تفاعل جميع الأعضاء في الكتائب، وفي نهاية المطاف يجمع تفاعل كل أعضاء نقابة لوحده، لكي يُعطى اللقب للنقابة التي تملك أعلى مجموع تفاعل لأعضائها.</li>
+                        <li><strong>شرط أساسي للأعضاء:</strong> يجب على كل شخص داخل النقابات إعطاء لقبه مع تحديد انتمائه في الكتيبة لكي يتم احتساب تفاعله بشكل صحيح في النظام.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="members-shields" class="panel-section">
+            <div class="parchment-card">
+                <h2>دروع الأعضاء والمجالس</h2>
+                <p class="story-text" style="text-align: center; margin-bottom: 30px;">
+                    الأوسمة والدروع الفردية لأبرز الشخصيات القيادية والإدارية والمؤثرة في الموسم.
+                </p>
+
+                <div class="grid-subsections">
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-shield-cat" style="color: var(--royal-gold);"></i> درع القائد والنائب</h3>
+                        <p>تُمنح لأفضل **قائد نقابة** وأفضل **نائب قائد** بناءً على معايير صارمة تشمل كفاءة إدارة شؤون نقاباتهم طوال فترة الشهر.</p>
+                    </div>
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-vault" style="color: var(--royal-gold);"></i> درع الوزير</h3>
+                        <p>تُمنح لأفضل **وزير بنك** تابع لنقابة، والمسؤول عن الماليات والدعم اللوجستي.</p>
+                    </div>
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-passport" style="color: var(--royal-gold);"></i> درع السفارة</h3>
+                        <p>تُمنح لأفضل **سفير** تابع لنقابة، العقل الدبلوماسي وحلقة الوصل الخارجية.</p>
+                    </div>
+                    <div class="sub-box">
+                        <h3><i class="fa-solid fa-user-shield" style="color: var(--royal-gold);"></i> درع المشرفين والعضو</h3>
+                        <p>تُمنح لأفضل **مشرف** تابع للنقابة (تطبق على الكتائب أيضاً) ولـ **أفضل عضو** من ناحية التفاعل والنشاط الملحوظ.</p>
+                    </div>
+                </div>
+
+                <div class="law-box">
+                    <h4>📋 لائحة معايير تقييم القادة، النواب، والمشرفين:</h4>
+                    <ul style="list-style-type: circle;">
+                        <li><strong>القادة والنواب:</strong> يتم التقييم بناءً على (التواجد المستمر، التنظيم الإداري، سرعة حل المشاكل، والقدرة الفائقة على سد الفراغات).</li>
+                        <li><strong>المشرفون:</strong> يتم الاحتساب بناءً على (عدد الإنذارات الإدارية، عدد الإنذارات العادية، ونسبة إكمال المهام الموكلة لهم).</li>
+                        <li><strong>قاعدة كسر التعادل للمشرفين:</strong> في حال تقارب مشرفين في النقاط، تفصل الجائزة بناءً على (عدد الفعاليات المقامة داخل وخارج النقابة، وحسن السلوك العام في المملكة).</li>
+                        <li><strong>ميزة مشرفي الكتائب:</strong> في حال كان هناك مشرف في نقابة وبنفس الوقت مشرف في كتيبة، تضاف وتدمج النقاط له لتعزيز فرصه عند التقارب والمنافسة مع مشرف آخر.</li>
+                    </ul>
+                </div>
+
+                <div class="law-box" style="background: #191410;">
+                    <h4>🏛️ محددات تقييم المجالس والوزارات:</h4>
+                    <ul>
+                        <li><strong>المجالس الإدارية:</strong> الالتزام التام، عدد المهام المنجزة، والحد الأدنى من الإنذارات.</li>
+                        <li><strong>تطوير القادة والنواب:</strong> التواجد، تجديد الأفكار بشكل مستمر، التنظيم، وتقديم تطويرات مستمرة ترفع من شأن النقابة والمملكة.</li>
+                        <li><strong>الوزير:</strong> تحديث بيانات البنك وحساباته بانتظام ودقة تامة دون تأخير.</li>
+                        <li><strong>السفارة:</strong> إدخال المسافرين والزوار بدون أي تأخير، ومتابعة تذكيرهم بالخروج فور انتهاء وقت زيارتهم المحددة.</li>
+                    </ul>
+                </div>
+
+                <div class="badge-info" style="color: #ffcc00; font-weight: bold; border-color: #ffcc00;">
+                    ⚠️ معلومة ملكية عامة: كل الألقاب والدروع المذكورة أعلاه ينظر فيها أولاً وأخيراً مع "حسن سير وسلوك" المشرف، القائد، أو النائب داخل كافة أرجاء المملكة طوال الشهر.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function switchTab(panelId, event) {
+            // منع السلوك الافتراضي للرابط
+            event.preventDefault();
+
+            // إخفاء جميع الأقسام
+            const sections = document.querySelectorAll('.panel-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // إزالة الحالة النشطة من جميع روابط القائمة
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // إظهار القسم المطلوب وتفعيل الزر الخاص به
+            document.getElementById(panelId).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            // إغلاق المنيو الجانبي تلقائياً بعد الاختيار
+            toggleSidebar();
+
+            // سحب الشاشة لأعلى المحتوى بسلاسة
+            window.scrollTo({ top: 350, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
