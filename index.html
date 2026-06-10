@@ -30,6 +30,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 30%, #251216 0%, #0f0806 70%);
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3, h4, .throne-title {
@@ -120,7 +121,7 @@
         header h1 { font-size: 3.8rem; color: var(--royal-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
         header p { font-size: 1.2rem; color: #bfa38a; margin-top: 5px; font-style: italic; }
 
-        /* --- شريط البحث المتطور للروابط 🔍 --- */
+        /* --- شريط البحث المتطور الشامل 🔍 --- */
         .search-container {
             max-width: 700px;
             margin: 20px auto 40px auto;
@@ -161,7 +162,7 @@
             border: 2px solid var(--royal-gold);
             border-top: none;
             border-radius: 0 0 15px 15px;
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
             display: none;
             box-shadow: 0 15px 35px rgba(0,0,0,0.8);
@@ -171,20 +172,21 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 20px;
+            padding: 15px 20px;
             color: var(--parchment);
-            text-decoration: none;
             border-bottom: 1px solid rgba(197, 160, 89, 0.1);
             transition: var(--transition);
+            cursor: pointer; /* جعل النتيجة قابلة للضغط كزر */
         }
         .search-result-item:hover { background: var(--velvet-crimson); color: white; }
-        .search-result-item i { color: var(--royal-gold); }
+        .search-result-item i { color: var(--royal-gold); font-size: 1.1rem; }
+        .search-result-item small { color: #bfa38a; font-size: 0.8rem; margin-right: auto; } /* لتوضيح نوع النتيجة */
         .no-results { padding: 15px; text-align: center; color: #8b7355; font-style: italic; }
 
         /* --- الأقسام والحاويات الكبرى --- */
         .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* جعل كروت القصة والشرح منسابة عمودياً (تحت بعضها البعض) */
+        /* جعل كروت القصة والشرح منسابة عمودياً */
         .intro-vertical-flex {
             display: flex;
             flex-direction: column;
@@ -216,13 +218,9 @@
         }
 
         /* إخفاء الأقسام عن الصفحة الرئيسية افتراضياً */
-        .panel-section {
-            display: none;
-            margin-bottom: 50px;
-        }
-        .panel-section.active-pane {
-            display: block;
-        }
+        .panel-section { display: none; margin-bottom: 50px; }
+        .panel-section.active-pane { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* زينة واستعراض كروت المخطوطات الداخلية للأقسام */
         .parchment-card {
@@ -384,7 +382,7 @@
 
     <div class="search-container">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="mainSearch" placeholder="اكتب اسم الرابط هنا للوصول السريع والآمن من المحرك..." onkeyup="searchAllLinks()">
+        <input type="text" id="mainSearch" placeholder="اكتب اسم الرابط، القسم، أو الوسام للبحث في كل المملكة..." onkeyup="searchEntireSite()">
         <div class="search-results-box" id="searchResults"></div>
     </div>
 
@@ -577,7 +575,7 @@
     </div>
 
     <script>
-        // فتح وإغلاق الساحة الجانبية المنيو
+        // التبديل للمنيو الجانبي
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -585,16 +583,14 @@
             overlay.classList.toggle('active');
         }
 
-        // دالة التنقل والتبديل الديناميكي الفاخرة بين الأقسام دون مغادرة الصفحة
+        // دالة التنقل بين الأقسام بذكاء
         function viewPane(paneId, event) {
             if(event) event.preventDefault();
             
-            // إخفاء الواجهة الرئيسية أولاً والأقسام الأخرى
             document.getElementById('homeSection').style.display = 'none';
             const sections = document.querySelectorAll('.panel-section');
             sections.forEach(sec => sec.classList.remove('active-pane'));
             
-            // إزالة حالة الروابط النشطة بالمنيو
             const menuLinks = document.querySelectorAll('.sidebar-menu a');
             menuLinks.forEach(link => link.classList.remove('active-link'));
 
@@ -605,25 +601,24 @@
                 const target = document.getElementById(paneId);
                 if(target) {
                     target.classList.add('active-pane');
-                    // تمييز التحديد الحالي في المنيو
                     if(event && event.currentTarget) {
                         event.currentTarget.classList.add('active-link');
                     }
                 }
             }
             
-            // إغلاق المنيو تلقائياً لتسهيل الرؤية
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
             
-            // صعود تلقائي لأعلى الشاشة لراحة القراءة
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // محرك البحث المتطور والشامل لاستخراج وفلترة كافة الروابط المضافة بالموقع 🔍
-        function searchAllLinks() {
+        // ==========================================
+        // محرك البحث الشامل والذكي لكل أرجاء الموقع 🔍
+        // ==========================================
+        function searchEntireSite() {
             const query = document.getElementById('mainSearch').value.toLowerCase().trim();
             const resultsContainer = document.getElementById('searchResults');
             
@@ -634,35 +629,90 @@
                 return;
             }
             
-            // جلب كافة الروابط الموجودة بداخل المنيو الجانبي وكروت الكتائب
-            const allLinks = document.querySelectorAll('.sidebar-menu a, .join-btn');
             let foundMatches = 0;
-            
-            allLinks.forEach(link => {
-                // تخطي الرابط إن كان زر تبديل الشاشة الرئيسية
-                if(link.id === 'homeLink') return;
 
+            // دالة مساعدة لإنشاء وعرض نتيجة البحث برمجياً كزر تفاعلي
+            function createResultItem(text, iconClass, typeLabel, onClickAction) {
+                foundMatches++;
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'search-result-item';
+                resultDiv.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span> <small>${typeLabel}</small>`;
+                
+                // عند الضغط على النتيجة، يتنفذ الأمر المناسب لنوعها
+                resultDiv.onclick = onClickAction;
+                resultsContainer.appendChild(resultDiv);
+            }
+
+            // 1. مسح الروابط الخارجية (كتائب، إعلانات، نقابات)
+            const externalLinks = document.querySelectorAll('.sidebar-menu a[target="_blank"], .join-btn');
+            externalLinks.forEach(link => {
                 const text = link.innerText.trim();
                 if (text.toLowerCase().includes(query)) {
-                    foundMatches++;
+                    const icon = link.querySelector('i') ? link.querySelector('i').className : 'fa-solid fa-link';
+                    const href = link.getAttribute('href');
                     
-                    const iconElement = link.querySelector('i');
-                    const iconClass = iconElement ? iconElement.className : 'fa-solid fa-link';
-                    const href = link.getAttribute('href') || '#';
-                    
-                    const resultItem = document.createElement('a');
-                    resultItem.href = href;
-                    resultItem.target = '_blank';
-                    resultItem.className = 'search-result-item';
-                    resultItem.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span>`;
-                    
-                    resultsContainer.appendChild(resultItem);
+                    createResultItem(text, icon, 'رابط خارجي', () => {
+                        window.open(href, '_blank');
+                        resultsContainer.style.display = 'none';
+                    });
                 }
             });
-            
+
+            // 2. مسح الأقسام الرئيسية في المنيو (مثل عروش النقابات، قاعة الكتائب)
+            const internalSections = document.querySelectorAll('.sidebar-menu a[onclick*="viewPane"]');
+            internalSections.forEach(link => {
+                const text = link.innerText.trim();
+                if (link.id !== 'homeLink' && text.toLowerCase().includes(query)) {
+                    const icon = link.querySelector('i') ? link.querySelector('i').className : 'fa-solid fa-folder-open';
+                    
+                    // استخراج الآي دي الخاص بالقسم من أمر الأون كليك
+                    const onclickAttr = link.getAttribute('onclick');
+                    const match = onclickAttr.match(/viewPane\('([^']+)'/);
+                    if (match) {
+                        const paneId = match[1];
+                        createResultItem(text, icon, 'قسم رئيسي', () => {
+                            viewPane(paneId);
+                            resultsContainer.style.display = 'none';
+                            document.getElementById('mainSearch').value = '';
+                        });
+                    }
+                }
+            });
+
+            // 3. المسح العميق لداخل الأقسام (العناوين الفرعية، الأوسمة، الدروع، الكتائب الفردية)
+            const deepContent = document.querySelectorAll('.panel-section h2, .sub-box h3, .battalion-title, .medal-badge, .admin-card h3');
+            deepContent.forEach(element => {
+                const text = element.innerText.trim();
+                if (text.toLowerCase().includes(query)) {
+                    // تحديد القسم الأب المخفي الذي يتبع له هذا العنصر لفتحه
+                    const parentSection = element.closest('.panel-section');
+                    if (parentSection) {
+                        const paneId = parentSection.id;
+                        const icon = element.querySelector('i') ? element.querySelector('i').className : 'fa-solid fa-magnifying-glass';
+                        
+                        createResultItem(text, icon, 'محتوى داخلي', () => {
+                            // فتح القسم المخفي أولاً
+                            viewPane(paneId);
+                            resultsContainer.style.display = 'none';
+                            document.getElementById('mainSearch').value = '';
+                            
+                            // ثم النزول السلس للعنصر نفسه بعد مهلة قصيرة ليتم تجهيز العرض
+                            setTimeout(() => {
+                                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                // تأثير وميض خفيف للعنصر للفت الانتباه
+                                element.style.transition = 'all 0.5s';
+                                element.style.textShadow = '0 0 15px var(--bright-gold)';
+                                setTimeout(() => element.style.textShadow = 'none', 1500);
+                            }, 100);
+                        });
+                    }
+                }
+            });
+
+            // إظهار صندوق النتائج أو رسالة الاعتذار
             resultsContainer.style.display = 'block';
             if (foundMatches === 0) {
-                resultsContainer.innerHTML = '<div class="no-results">عذراً، لم يتم العثور على روابط مسجلة تطابق هذا الاسم...</div>';
+                resultsContainer.innerHTML = '<div class="no-results">عذراً، لم يتم العثور على أي تطابق في أنحاء المملكة...</div>';
             }
         }
 
@@ -676,7 +726,7 @@
             document.getElementById('medalModal').classList.remove('open');
         }
 
-        // تحديث الوقت الملكي والتوثيق الرقمي بالفوتر
+        // تحديث الوقت الملكي التلقائي
         function updateRoyalClock() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -687,7 +737,7 @@
         setInterval(updateRoyalClock, 1000);
         updateRoyalClock();
 
-        // إغلاق عناصر البحث والنوافذ عند الضغط خارجها لراحة المستخدم
+        // إغلاق الصناديق التفاعلية عند الضغط في الخارج
         window.onclick = function(event) {
             const searchBox = document.getElementById('searchResults');
             const searchInput = document.getElementById('mainSearch');
