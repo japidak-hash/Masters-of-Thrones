@@ -38,7 +38,7 @@
             font-family: 'Amiri', serif;
         }
 
-        /* --- القائمة الجانبية الفيكتورية (Sidebar) ☰ --- */
+        /* --- القائمة الجانبية الفخم (الساحة الجانبية) ☰ --- */
         .menu-toggle {
             position: fixed;
             top: 25px;
@@ -66,57 +66,67 @@
         .sidebar {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 320px;
+            right: -340px;
+            width: 340px;
             height: 100%;
-            background: #160c09;
+            background: #140b08;
             border-left: 3px double var(--royal-gold);
             z-index: 999;
-            padding: 90px 20px 30px 20px;
+            padding: 90px 15px 30px 15px;
             transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
             box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+            overflow-y: auto; /* تفعيل التمرير الداخلي للروابط الكثيرة */
         }
         .sidebar.active { right: 0; }
 
         .sidebar-brand {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             border-bottom: 1px dashed var(--royal-gold);
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
-        .sidebar-brand h2 { color: var(--royal-gold); font-size: 1.8rem; }
+        .sidebar-brand h2 { color: var(--royal-gold); font-size: 1.6rem; }
+
+        .sidebar-section-title {
+            font-size: 0.95rem;
+            color: var(--bright-gold);
+            background: rgba(74, 18, 26, 0.5);
+            padding: 6px 12px;
+            margin: 20px 0 10px 0;
+            border-right: 3px solid var(--royal-gold);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
 
         .sidebar-menu { list-style: none; }
-        .sidebar-menu li { margin-bottom: 15px; }
+        .sidebar-menu li { margin-bottom: 8px; }
         .sidebar-menu a {
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: var(--parchment);
+            gap: 12px;
+            color: #dfd3ba;
             text-decoration: none;
-            padding: 12px 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 10px 15px;
+            font-size: 0.95rem;
             border-radius: 4px;
             border: 1px solid transparent;
             transition: var(--transition);
         }
         .sidebar-menu a:hover {
-            background: var(--velvet-crimson);
+            background: #221214;
             border-color: var(--royal-gold);
             color: var(--bright-gold);
-            text-shadow: 0 0 10px rgba(243,229,171,0.5);
         }
 
         /* --- الهيدر العام --- */
         header { text-align: center; padding: 50px 20px 10px 20px; position: relative; }
-        header h1 { font-size: 3.5rem; color: var(--royal-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); letter-spacing: 1px; }
+        header h1 { font-size: 3.5rem; color: var(--royal-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
         header p { font-size: 1.2rem; color: #bfa38a; margin-top: 5px; font-style: italic; }
 
         /* --- شريط البحث الفخم 🔍 --- */
         .search-container {
             max-width: 750px;
-            margin: 30px auto;
+            margin: 20px auto 40px auto;
             position: relative;
             padding: 0 20px;
         }
@@ -144,7 +154,89 @@
             font-size: 1.3rem;
         }
 
-        /* --- كروت الأقسام الأربعة البديلة عن العروش 👑 --- */
+        /* --- الشاشة الرئيسية: شرح الموسم والقصة والروابط الستة --- */
+        .home-showcase {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        .story-card, .season-card {
+            background: linear-gradient(145deg, #1d100d, #110806);
+            border: 2px solid var(--royal-gold);
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+        }
+        .story-card h3, .season-card h3 {
+            color: var(--bright-gold);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px double rgba(197, 160, 89, 0.3);
+            padding-bottom: 10px;
+        }
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            color: #e6dac2;
+        }
+
+        /* شبكة الروابط الستة الأخرى بالرئيسية */
+        .links-hub-title {
+            text-align: center;
+            color: var(--royal-gold);
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            font-family: 'Amiri', serif;
+        }
+        .six-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .hub-link-card {
+            background: #1a0f10;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            padding: 18px 10px;
+            text-align: center;
+            border-radius: 4px;
+            color: var(--parchment);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+        .hub-link-card i {
+            font-size: 1.5rem;
+            color: var(--royal-gold);
+            transition: var(--transition);
+        }
+        .hub-link-card:hover {
+            border-color: var(--bright-gold);
+            background: var(--velvet-crimson);
+            transform: translateY(-3px);
+            color: white;
+        }
+        .hub-link-card:hover i {
+            color: var(--bright-gold);
+            transform: scale(1.1);
+        }
+
+        /* --- كروت التنقل الكلاسيكية --- */
         .sections-nav-container {
             max-width: 1200px;
             margin: 0 auto 50px auto;
@@ -163,23 +255,22 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
             transition: var(--transition);
             cursor: pointer;
-            text-decoration: none;
         }
         .nav-block-card::before {
             content: ''; position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px;
             border: 1px double rgba(197, 160, 89, 0.2); pointer-events: none;
         }
         .nav-block-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: var(--bright-gold);
             box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3);
         }
-        .nav-block-icon { font-size: 2.8rem; margin-bottom: 15px; color: var(--royal-gold); transition: var(--transition); }
-        .nav-block-card:hover .nav-block-icon { transform: scale(1.1); color: var(--bright-gold); text-shadow: 0 0 15px var(--royal-gold); }
-        .nav-block-title { font-size: 1.4rem; font-weight: bold; color: var(--parchment); }
+        .nav-block-icon { font-size: 2.5rem; margin-bottom: 12px; color: var(--royal-gold); transition: var(--transition); }
+        .nav-block-card:hover .nav-block-icon { color: var(--bright-gold); }
+        .nav-block-title { font-size: 1.3rem; font-weight: bold; color: var(--parchment); }
 
         /* --- المحتوى الرئيسي والأقسام --- */
-        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px 20px; }
+        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px 20px 20px; }
         .panel-section { display: block; margin-bottom: 60px; scroll-margin-top: 100px; }
 
         .parchment-card {
@@ -202,7 +293,6 @@
         }
         .sub-box:hover { background: rgba(74, 18, 26, 0.35); border-color: var(--bright-gold); }
         .sub-box h3 { color: var(--bright-gold); font-size: 1.5rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .sub-box p { font-size: 1.05rem; line-height: 1.7; color: #dfd3ba; }
 
         /* --- تصميم كروت الكتائب الـ 5 المخصصة 🛡️ --- */
         .battalions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
@@ -210,12 +300,10 @@
             background: linear-gradient(135deg, #161112, #211514); border: 2px solid var(--royal-gold);
             border-radius: 6px; padding: 25px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: var(--transition);
         }
-        .battalion-card:hover { transform: translateY(-5px); border-color: var(--bright-gold); box-shadow: 0 15px 35px rgba(197, 160, 89, 0.2); }
         .battalion-header { display: flex; align-items: center; gap: 15px; border-bottom: 1px double rgba(197, 160, 89, 0.3); padding-bottom: 15px; margin-bottom: 15px; }
         .battalion-icon { font-size: 2.2rem; color: var(--royal-gold); }
-        .battalion-title { font-size: 1.6rem; color: var(--bright-gold); font-family: 'Amiri', serif; }
+        .battalion-title { font-size: 1.6rem; color: var(--bright-gold); }
         
-        /* علبة أوسمة الشرف الـ 5 التفاعلية 🏅 */
         .medals-container {
             background: rgba(0,0,0,0.4); padding: 15px; border-radius: 4px;
             margin-bottom: 15px; border: 1px solid rgba(197,160,89,0.2);
@@ -227,13 +315,7 @@
             color: var(--parchment); padding: 6px 10px; border-radius: 20px; font-size: 0.85rem;
             cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 5px; font-weight: bold;
         }
-        .medal-badge:hover {
-            background: var(--royal-gold); color: var(--bg-feudal); transform: scale(1.05);
-            box-shadow: 0 0 10px var(--bright-gold);
-        }
-        .medal-badge i { color: #ffcc00; }
-        .medal-badge:hover i { color: var(--bg-feudal); }
-
+        .medal-badge:hover { background: var(--royal-gold); color: var(--bg-feudal); transform: scale(1.05); }
         .content-mix { font-size: 0.95rem; line-height: 1.6; color: #d2c5ab; margin-bottom: 20px; }
         .content-mix span { display: inline-block; background: var(--velvet-crimson); color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 0.8rem; margin-left: 5px; }
 
@@ -241,12 +323,9 @@
             display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px;
             background: linear-gradient(180deg, #4a121a, #2f0b10); border: 1px solid var(--royal-gold);
             color: var(--parchment); text-decoration: none; font-weight: bold; font-size: 1.05rem; border-radius: 4px;
-            transition: var(--transition); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: var(--transition);
         }
-        .join-btn:hover {
-            background: linear-gradient(180deg, #6b1b26, #4a121a); color: var(--bright-gold);
-            border-color: var(--bright-gold); box-shadow: 0 0 15px rgba(243,229,171,0.3);
-        }
+        .join-btn:hover { background: linear-gradient(180deg, #6b1b26, #4a121a); color: var(--bright-gold); border-color: var(--bright-gold); }
 
         /* --- قسم الكتائب الإداري الفاخر 🏛️ --- */
         .admin-section {
@@ -254,20 +333,16 @@
             border: 3px double var(--royal-gold); padding: 35px; border-radius: 6px;
             margin-top: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.7); position: relative;
         }
-        .admin-section h2 { color: #7da5cc; text-shadow: 0 0 10px rgba(125,165,204,0.3); }
         .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
         .admin-card {
             background: rgba(16, 25, 36, 0.6); border: 1px solid rgba(197, 160, 89, 0.4);
             border-radius: 6px; padding: 20px; transition: var(--transition); box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
         }
-        .admin-card:hover { border-color: var(--bright-gold); background: rgba(28, 45, 61, 0.4); }
         .admin-card h3 { color: var(--bright-gold); font-size: 1.35rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .admin-card h3 i { color: var(--royal-gold); }
         .admin-card ul { list-style: none; padding-right: 5px; }
         .admin-card li { font-size: 0.95rem; color: #cedce7; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
         .admin-card li i { color: #5bc0be; font-size: 0.8rem; }
 
-        /* صناديق القوانين والمعايير والتنبيهات هامة */
         .law-box {
             background: #241115; border-right: 5px solid var(--royal-gold);
             border-left: 1px solid rgba(197,160,89,0.3); border-top: 1px solid rgba(197,160,89,0.3); border-bottom: 1px solid rgba(197,160,89,0.3);
@@ -297,13 +372,37 @@
             transform: scale(0.8); transition: transform 0.4s ease;
         }
         .modal.open .modal-content { transform: scale(1); }
-        .modal-title { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 15px; border-bottom: 1px dashed var(--royal-gold); padding-bottom: 10px; }
+        .modal-title { font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 15px; border-bottom: 1px dashed var(--royal-gold); padding-bottom: 10px; }
         .modal-body { font-size: 1.15rem; line-height: 1.8; color: var(--parchment); margin-bottom: 25px; }
         .modal-close {
             background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment);
             padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: var(--transition);
         }
-        .modal-close:hover { background: #6b1b26; color: white; border-color: var(--bright-gold); }
+
+        /* الفوتر (تذييل الصفحة بالحقوق والوقت) 📜 */
+        footer {
+            background: #090403;
+            border-top: 2px solid var(--royal-gold);
+            padding: 30px 20px;
+            text-align: center;
+            color: #bfa38a;
+            font-size: 1rem;
+            margin-top: 50px;
+            position: relative;
+        }
+        footer .credits-brand {
+            color: var(--bright-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        footer .time-stamp {
+            font-size: 0.9rem;
+            color: #8b7355;
+            margin-top: 8px;
+            direction: ltr;
+            display: inline-block;
+        }
 
         /* طبقات الزخرفة الزاوية الفيكتورية */
         .corner-decor { position: absolute; width: 15px; height: 15px; border: 2px solid var(--royal-gold); }
@@ -326,13 +425,42 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <h2>مخطوطات العروش</h2>
+            <h2>الساحة الجانبية للمملكة</h2>
         </div>
+        
+        <div class="sidebar-section-title">🧭 التنقل السريع في الدستور</div>
         <ul class="sidebar-menu">
             <li><a href="#" onclick="scrollToSection('guilds-thrones', event)"><i class="fa-solid fa-chess-king"></i> عروش النقابات</a></li>
             <li><a href="#" onclick="scrollToSection('battalions-section', event)"><i class="fa-solid fa-shield-halved"></i> قاعة الكتائب</a></li>
             <li><a href="#" onclick="scrollToSection('members-shields', event)"><i class="fa-solid fa-medal"></i> دروع الأعضاء والمجالس</a></li>
             <li><a href="#" onclick="scrollToSection('interaction-rules', event)"><i class="fa-solid fa-gavel"></i> قوانين التفاعل</a></li>
+        </ul>
+
+        <div class="sidebar-section-title">🛡️ روابط وإعلانات الكتائب</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" target="_blank"><i class="fa-solid fa-futbol"></i> رابط كتيبة الرياضة</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-gamepad"></i> رابط كتيبة الألعاب</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-palette"></i> رابط كتيبة المواهب</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-film"></i> رابط كتيبة السينما</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-book-open"></i> رابط كتيبة المانجا</a></li>
+            <li><a href="#" target="_blank" style="color: #ffcc00; font-weight: bold;"><i class="fa-solid fa-bullhorn"></i> بوق إعلانات الكتائب</a></li>
+        </ul>
+
+        <div class="sidebar-section-title">👑 استقبال طلبات النقابات (6 روابط)</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الأولى</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الثانية</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الثالثة</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الرابعة</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الخامسة</a></li>
+            <li><a href="#" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة السادسة</a></li>
+        </ul>
+
+        <div class="sidebar-section-title">📊 المنصات واللوحات الملكية</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" target="_blank" style="color: #5bc0be;"><i class="fa-solid fa-square-poll-horizontal"></i> موقع لوحة النتائج</a></li>
+            <li><a href="#" target="_blank" style="color: #ff7f50;"><i class="fa-solid fa-fire-burner"></i> إعلانات التحديات والمواجهات</a></li>
+            <li><a href="#" target="_blank" style="color: #a984e7;"><i class="fa-solid fa-newspaper"></i> صحيفة المملكة الكبرى</a></li>
         </ul>
     </nav>
 
@@ -345,6 +473,54 @@
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" id="mainSearch" placeholder="ابحث عن قانون، كتيبة، درع، مخالفة، أو كلمة معينة..." onkeyup="filterContent()">
     </div>
+
+    <section class="home-showcase">
+        <div class="intro-grid">
+            <div class="season-card">
+                <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
+                <h3>📜 عن الموسم الملحمي</h3>
+                <p class="intro-text">
+                    مرحباً بكم في الموسم الجديد والفريد من نوعه لـ "أسياد العروش". هذا الموسم ليس مجرد مسابقة تفاعل تقليدية، بل هو صراع تكتيكي خالص تتنافس فيه النقابات والتحالفات الحرة لإثبات هيمنتها الفكرية والتفاعلية. تم إدخال تعديلات ثورية تشمل "دستور نظام التيمات" المستقل لرفع كفاءة ومشاركة الأعضاء، بالإضافة إلى تدشين "قاعة الكتائب الخمسة" لضمان توزيع النشاطات وتكريم المبدعين بأوسمة شرف حصرية لا ينالها إلا الفرسان المخلصون.
+                </p>
+            </div>
+
+            <div class="story-card">
+                <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
+                <h3>⚔️ حكاية العروش والرماد</h3>
+                <p class="intro-text">
+                    في غياهب العصور المظلمة، لم تكن السيادة تُشترى بالذهب، بل بصخب الأقلام المشتعلة وحصاد الكلمات في دواوين المملكة. تروي المخطوطات القديمة أن خمسة عروش عظيمة نُحتت من حجر النيازك، وظلت تنتظر ملوكاً يقودون نقاباتهم بقلب رجل واحد. ومع بزوغ فجر هذا الموسم، انطلقت جحافل التيمات المستقلة من قلاعها، تقسم على ألا يهدأ لها بال أو تجف لها ريشة، حتى تُرفع راياتهم على قمة "قاعة الكتائب" ويسجل التاريخ أسماءهم في صحيفة المملكة كأسياد حقيقيين لا تذبل أمجادهم.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="links-hub-title"><i class="fa-solid fa-link"></i> منصات ملكية وروابط خارجية هامة</h3>
+        <div class="six-links-grid">
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-dungeon"></i>
+                <span>حصن الأرشيف</span>
+            </a>
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-scroll-old"></i>
+                <span>سجل الأبطال</span>
+            </a>
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span>المحكمة الملكية</span>
+            </a>
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-hand-holding-hand"></i>
+                <span>صندوق الدعم</span>
+            </a>
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-gem"></i>
+                <span>متجر الألقاب</span>
+            </a>
+            <a href="#" target="_blank" class="hub-link-card">
+                <i class="fa-solid fa-compass"></i>
+                <span>دليل الفرسان</span>
+            </a>
+        </div>
+    </section>
 
     <section class="sections-nav-container">
         <div class="nav-block-card" onclick="scrollToSection('guilds-thrones')">
@@ -377,7 +553,7 @@
                 <div class="grid-subsections">
                     <div class="sub-box">
                         <h3><i class="fa-solid fa-fire" style="color: #ff4500;"></i> العرش الناري</h3>
-                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر حnumericalً وحصداً للتفاعل الإجمالي في الموسم ككل.</p>
+                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر حشداً وحصداً للتفاعل الإجمالي في الموسم ككل.</p>
                         <p style="margin-top: 8px; font-size: 0.95rem; color: #bfa38a;">* يعطى العرش الناري للنقابة الأعلى تفاعلاً في كل عروش التفاعل مجتمعة.</p>
                     </div>
 
@@ -536,7 +712,6 @@
                             <ul>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> التوجيه والإشراف العالي الكلي للكتائب الـ 5.</li>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> التنسيق الفخم بين قادة الكتائب وتطبيق ميثاق الموسم.</li>
-                                <li><i class="fa-solid fa-circle-chevron-left"></i> القدرة على اتخاذ القرارات المصيرية وفض النزاعات الكبرى.</li>
                             </ul>
                         </div>
                         <div class="admin-card">
@@ -544,7 +719,6 @@
                             <ul>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> المساندة التنفيذية التامة للقائد وسد الفراغات بغيابه.</li>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> متابعة التقارير اليومية للتفاعل وتحديث داتا الجداول والروابط.</li>
-                                <li><i class="fa-solid fa-circle-chevron-left"></i> تنظيم شؤون التيمات الخمسة والتحقق من أعداد أعضائها.</li>
                             </ul>
                         </div>
                         <div class="admin-card">
@@ -552,29 +726,8 @@
                             <ul>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> المراقبة والتحقق من انضباط وسير سلوك الكتائب والقروبات.</li>
                                 <li><i class="fa-solid fa-circle-chevron-left"></i> رصد وإصدار الإنذارات الإدارية والعادية بحق المخالفين بدقة.</li>
-                                <li><i class="fa-solid fa-circle-chevron-left"></i> تسيير وجدولة الفعاليات الطويلة والمسابقات المشتركة بسلاسة.</li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-
-                <h3 style="color: var(--royal-gold); text-align: center; margin-top: 40px; font-size: 2rem; border-top: 1px dashed rgba(197,160,89,0.3); padding-top: 20px;">العروش العامة الملحمية للكتائب</h3>
-                <div class="grid-subsections" style="margin-top: 20px;">
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-trophy" style="color: #ffcc00;"></i> عرش أفضل كتيبة</h3>
-                        <p>يُمنح للكتيبة الأكثر توازناً وإنجازاً وتنظيماً، والتي تنجح في تطبيق الميثاق طوال الشهر كاملاً.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-bolt" style="color: #ffaa00;"></i> عرش التفاعل</h3>
-                        <p>يُمنح للكتيبة صاحبة أعلى معدل تفاعل وضخ رسائل ونشاط مستمر دون انقطاع بين سائر الكتائب.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-lightbulb" style="color: #00ffcc;"></i> عرش الأفكار</h3>
-                        <p>يُمنح للكتيبة التي تبهر الإدارة بتقديم أفكار مبتكرة، فعاليات فريدة خارج الصندوق، وتحديثات دورية فخمة.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-sitemap" style="color: #cc00ff;"></i> عرش التنظيم</h3>
-                        <p>يُمنح للكتيبة الأكثر انضباطاً، والتي يلتزم قادتها ومشرفوها بالقوانين الإدارية وتوزيع المهام بدقة وسلاسة.</p>
                     </div>
                 </div>
 
@@ -585,9 +738,8 @@
                         لإشعال روح التنافس وضمان العمل الجماعي المنظم، تم اعتماد نظام **التيمات المنفصلة** بالكامل عن نظام النقابات التقليدي:
                     </p>
                     <ul style="padding-right: 20px; color: #dfd3ba; margin-top: 10px; line-height: 1.8; font-size: 1.1rem;">
-                        <li>🛡️ **الاستقلالية التامة:** التيمات هي تحالفات وتجمعات حرة للأعضاء داخل الكتائب، ولا ترتبط بأي شكل من الأشكال بنقابتك الأساسية في المملكة.</li>
-                        <li>👥 **الحد الأقصى للأعضاء:** يتكون كل تيم من **5 أعضاء كحد أقصى** داخل التيم الواحد، ولا يُسمح بتجاوز هذا العدد لضمان تكافؤ الفرص والتحكم.</li>
-                        <li>⚔️ **الهدف التنافسي:** تتنافس هذه التيمات على تنفيذ مهام الكتائب، وتجميع النقاط لدعم الكتيبة ورفع ترتيب الأعضاء الفردي للحصول على الدروع الكبرى.</li>
+                        <li>🛡️ **الاستقلالية التامة:** التيمات هي تحالفات حرة للأعضاء داخل الكتائب، ولا ترتبط بنقابتك الأساسية.</li>
+                        <li>👥 **الحد الأقصى للأعضاء:** يتكون كل تيم من **5 أعضاء كحد أقصى** لضمان تكافؤ الفرص.</li>
                     </ul>
                 </div>
             </div>
@@ -597,39 +749,26 @@
             <div class="parchment-card">
                 <h2>دروع الأعضاء والمجالس</h2>
                 <p class="story-text" style="text-align: center; margin-bottom: 30px;">
-                    الأوسمة والدروع الفردية لأبرز الشخصيات القيادية والإدارية والمؤثلرة في الموسم.
+                    الأوسمة والدروع الفردية لأبرز الشخصيات القيادية والإدارية والمؤثرة في الموسم.
                 </p>
 
                 <div class="grid-subsections">
                     <div class="sub-box">
                         <h3><i class="fa-solid fa-shield-cat" style="color: var(--royal-gold);"></i> درع القائد والنائب</h3>
-                        <p>تُمنح لأفضل **قائد نقابة** وأفضل **نائب قائد** بناءً على معايير صارمة تشمل كفاءة إدارة شؤون نقاباتهم طوال فترة الشهر.</p>
+                        <p>تُمنح لأفضل **قائد نقابة** وأفضل **نائب قائد** بناءً على كفاءة إدارة شؤون نقاباتهم طوال الشهر.</p>
                     </div>
                     <div class="sub-box">
                         <h3><i class="fa-solid fa-vault" style="color: var(--royal-gold);"></i> درع الوزير</h3>
                         <p>تُمنح لأفضل **وزير بنك** تابع لنقابة، والمسؤول عن الماليات والدعم اللوجستي.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-passport" style="color: var(--royal-gold);"></i> درع السفارة</h3>
-                        <p>تُمنح لأفضل **سفير** تابع لنقابة، العقل الدبلوماسي وحلقة الوصل الخارجية.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-user-shield" style="color: var(--royal-gold);"></i> درع المشرفين والعضو</h3>
-                        <p>تُمنح لأفضل **مشرف** تابع للنقابة وـ **أفضل عضو** من ناحية التفاعل والنشاط الملحوظ.</p>
                     </div>
                 </div>
 
                 <div class="law-box">
                     <h4>📋 لائحة معايير تقييم القادة، النواب، والمشرفين:</h4>
                     <ul style="list-style-type: circle;">
-                        <li><strong>القادة والنواب:</strong> يتم التقييم بناءً على (التواجد المستمر، التنظيم الإداري، سرعة حل المشاكل، والقدرة الفائقة على سد الفراغات).</li>
-                        <li><strong>المشرفون:</strong> يتم الاحتساب بناءً على (عدد الإنذارات الإدارية، عدد الإنذارات العادية، ونسبة إكمال المهام الموكلة لهم).</li>
-                        <li><strong>قاعدة كسر التعادل للمشرفين:</strong> في حال تقارب مشرفين في النقاط، تفصل الجائزة بناءً على (عدد الفعاليات المقامة داخل وخارج النقابة، وحسن السلوك العام في المملكة).</li>
+                        <li><strong>القادة والنواب:</strong> يتم التقييم بناءً على (التواجد المستمر، التنظيم الإداري، وسرعة حل المشاكل).</li>
+                        <li><strong>المشرفون:</strong> يتم الاحتساب بناءً على (عدد الإنذارات الإدارية، العادية، ونسبة إكمال المهام).</li>
                     </ul>
-                </div>
-
-                <div class="badge-info" style="color: #ffcc00; font-weight: bold; border-color: #ffcc00;">
-                    ⚠️ معلومة ملكية عامة: كل الألقاب والدروع المذكورة أعلاه ينظر فيها أولاً وأخيراً مع "حسن سير وسلوك" المشرف، القائد، أو النائب داخل كافة أرجاء المملكة طوال الشهر.
                 </div>
             </div>
         </div>
@@ -637,69 +776,31 @@
         <div id="interaction-rules" class="panel-section">
             <div class="parchment-card">
                 <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
-                <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
-                
                 <h2>📜 ميثاق ودستور قوانين التفاعل</h2>
                 <p class="story-text" style="text-align: center; margin-bottom: 30px;">
                     الضوابط واللوائح الصارمة لتنظيم التدفق التفاعلي وضمان التنافس العادل بين سائر النقابات.
                 </p>
 
                 <div class="grid-subsections" style="grid-template-columns: 1fr; gap: 25px;">
-                    
                     <div class="sub-box" style="border-color: #ff4500; background: rgba(74, 18, 26, 0.4);">
                         <h3 style="color: #ffa07a; font-size: 1.6rem;"><i class="fa-solid fa-triangle-exclamation" style="color: #ff4500;"></i> مخالفات السبام (المحظورات التفاعلية)</h3>
                         <ul style="list-style: none; padding-right: 5px; line-height: 1.9; font-size: 1.1rem; color: #fcd4dc;">
                             <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>الرسائل المتتالية:</strong> إرسال 4 رسائل فما فوق في آن واحد يُحتسب سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>الرسائل عديمة المعنى:</strong> إرسال 3 ملصقات عشوائية، أو كتابة أحرف عشوائية مبهمة، أو وضع نقاط أثناء المسابقات يُعد سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>سبام الأسئلة:</strong> إرسال ثلاث أسئلة متلاحقة قبل أن يقوم العضو المشارك بالإجابة على السؤال السابق.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>البوتات الخارجية:</strong> استخدام بوتات التفاعل التلقائي مثل (كت - احزر - عين.. الخ) وأي سبام بوت أو حرق بوت بالألعاب بشكل أكثر من اللازم.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>سبام المرفقات:</strong> إرسال 5 صور متتالية في المحادثة يُحسب سبام تلقائي.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>مشاركات الطاقم:</strong> مشاركة مقدمي المسابقات في الإجابة أو الفعالية تُصنف سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>تكرار الألقاب:</strong> يمنع كتابة اللقب بشكل متكرر اللقب مرتين فقط.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>التقديم العشوائي:</strong> التقديم وإدارة الفقرات بأسلوب عشوائي وغير منظم يُعد سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>الكلمات الاستدلالية المكررة:</strong> كتابة عبارات مثل (تست - هيا - نقاط) تُعد سبام، ولا يُسمح بها إطلاقاً إلا في بداية المسابقة كإشارة واضحة للمقدم، والإكثار منها في البداية يُحسب سبام أيضاً.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>التفاف المقدمين:</strong> إذا شارك المقدم بأي شكل ككتابة لقب ثم وضع نقطة، أو الإجابة على سؤاله الخاص، تُصنف المخالفة سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>ضعف تنوع الألقاب:</strong> يلتزم التقديم بالتنوع؛ الاعتماد على أقل من 15 لقباً مختلفاً للتنوع يقع تحت طائلة السبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>تكرار محتوى الفعاليات:</strong> تكرار نفس الأسئلة بالفعاليات، أو بالأسئلة المفاجئة، أو بالصور أثناء المسابقة يُعتبر سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>حظر المحاكيات:</strong> تشغيل المحاكيات ممنوع تماماً ويُخصم تفاعلها الكلي، وقد يُعامَل المحاكي معاملة البوت ويُدرج تحت تصنيف "بوت".</li>
+                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-ban" style="color: #ff4500; margin-left: 10px;"></i> <strong>الرسائل عديمة المعنى:</strong> إرسال 3 ملصقات عشوائية، أو أحرف عشوائية مبهمة يُعد سبام.</li>
                         </ul>
-
-                        <div class="law-box" style="border-right-color: #ff4500; background: rgba(255, 69, 0, 0.05); margin-top: 20px;">
-                            <h4 style="color: #ffa07a;"><i class="fa-solid fa-quote-right"></i> هوامش وتنبيهات عقوبات السبام:</h4>
-                            <ul style="list-style-type: none; padding-right: 0; font-size: 1rem; color: #dfd3ba;">
-                                <li style="margin-bottom: 8px;">📌 <strong>ملاحظة ¹ :</strong> إرسال أشخاص ليفعلو سبام بنقابات أخرى بشكل قصد رح يؤدي من خصم نسبي إلى اقصاء.</li>
-                                <li style="margin-bottom: 8px;">📌 <strong>ملاحظة ² :</strong> كثرت المخالفات ممكن تسبب زيادات بالخصم.</li>
-                                <li style="margin-bottom: 8px;">📌 <strong>ملاحظة ³ :</strong> المسؤول الاعلى او المراقب بيحذرك من اكثر سبام بنقابتك لكن ممنوع يعطيك عدد السبام يلي وصلته.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="sub-box" style="border-color: #2e8b57; background: rgba(46, 139, 87, 0.15);">
-                        <h3 style="color: #98fb98; font-size: 1.6rem;"><i class="fa-solid fa-circle-check" style="color: #2e8b57;"></i> الحالات المعفاة (ما لا يُعتبر سبام)</h3>
-                        <ul style="list-style: none; padding-right: 5px; line-height: 1.9; font-size: 1.1rem; color: #e2f4e2;">
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-check" style="color: #2e8b57; margin-left: 10px;"></i> <strong>المنشن والسوالف العميقة:</strong> لو العضو يرد على منشنات او يكتب سالفة طويلة = مو سبام (باستثناء لو تم ملاحظة عده مرات تقصد بهاذي الحركه).</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-check" style="color: #2e8b57; margin-left: 10px;"></i> <strong>تتابع الكلام الطبيعي:</strong> لو العضو ارسل 4 رسايل بس كانت سوالف أو رد على منشن دون ملاحظة ملصقات او فعل هذا قصدا = مو سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-check" style="color: #2e8b57; margin-left: 10px;"></i> <strong>التعبير الممتد عن الضحك:</strong> الضحكه طويلة برسالة وحده = مو سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-check" style="color: #2e8b57; margin-left: 10px;"></i> <strong>تبديل الطاقم المنظم:</strong> تبديل المقدم مع الإعلام قبل تبديل لعذر من المقدم الآخر = مو سبام.</li>
-                            <li style="margin-bottom: 12px;"><i class="fa-solid fa-check" style="color: #2e8b57; margin-left: 10px;"></i> <strong>أخطاء الكتابة (التكليج):</strong> اعاده لقب لانه كلج مره = مو سبام (ملاحظة تكليج المتقصد المتزايد بيحسب).</li>
-                        </ul>
-
-                        <div class="law-box" style="border-right-color: #2e8b57; background: rgba(46, 139, 87, 0.05); margin-top: 20px;">
-                            <h4 style="color: #98fb98;"><i class="fa-solid fa-gavel"></i> الأحكام الدستورية للرقابة العليا:</h4>
-                            <ul style="list-style-type: none; padding-right: 0; font-size: 1rem; color: #dfd3ba;">
-                                <li style="margin-bottom: 10px;">⚖️ <strong>ملاحظة ¹ :</strong> استغلال حركات ملتوية قصدا مثل فتح عده ساحات بيتم تعامل معاها بقسوه مع خصم.</li>
-                                <li style="margin-bottom: 10px;">⚖️ <strong>ملاحظة ² :</strong> اذا وصل خصم النقابة 30% سوف تقصى تلقائي. سيتم اعلام لورد النقابة عند وصول نسبه الخصم قرابة 15% مره واحده على الاقل (حسبة 24س استثناء).</li>
-                                <li style="margin-bottom: 10px;">⚖️ <strong>ملاحظة ³ :</strong> طرد المراقب بسبب مشكلة شخصيه سابقة او مشكلة حدثت دون رجوع إلى المنظم بيتم تعامل معاه بخصم عالي او اقصاء مؤقت.</li>
-                                <li style="margin-bottom: 10px;">⚖️ <strong>ملاحظة ⁴ :</strong> اذا تم ملاحظة بوت بالنقابة بيقصى الرقم بشكل مباشر و اذا تم تأكيد انه النائب او اللورد او المؤسس يعلم بوجود البوت بيتم اقصاء النقابة بشكل مؤقت او دائم.</li>
-                                <li style="margin-bottom: 10px;">⚖️ <strong>ملاحظة ⁵ :</strong> اي شكوى ولو كانت على مسؤول اعلى بالرقابة تعود إلى المسؤول و أي قرار لم يكتب يراه المسؤول صحيحًا سوف يُعتمد حسب العدل وصلاحياته.</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </main>
+
+    <footer>
+        <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
+        <p class="credits-brand">جميع الحقوق محفوظة ومسجلة © لـ لابوبو</p>
+        <p>ميثاق أسياد العروش والكتائب - تم التنظيم والتطوير بأعلى المعايير الدستورية الملكية</p>
+        <div class="time-stamp" id="royalClock">تاريخ المملكة: جاري تحميل الوقت...</div>
+    </footer>
 
     <div class="modal" id="medalModal">
         <div class="modal-content">
@@ -727,28 +828,22 @@
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            // إغلاق المنيو تلقائياً في حال كان مفتوحاً
+            // إغلاق المنيو تلقائياً
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
         }
 
-        // دالة الفلترة والبحث الذكي والكلي في المخطوطة 🔍
+        // دالة الفلترة والبحث الذكي 🔍
         function filterContent() {
             let input = document.getElementById('mainSearch').value.toLowerCase().trim();
-            
-            // استهداف العناصر القابلة للبحث والتحليل (الصناديق، كروت الكتائب، عناصر القوائم)
-            let subBoxes = document.querySelectorAll('.sub-box, .battalion-card, .admin-card, .law-box li, .law-box ul li');
+            let subBoxes = document.querySelectorAll('.sub-box, .battalion-card, .admin-card, .law-box li, .season-card, .story-card');
 
             subBoxes.forEach(el => {
                 let text = el.innerText.toLowerCase();
                 if (text.includes(input)) {
                     el.style.display = "";
-                    // إذا كان العنصر عبارة عن عنصر قائمة (li)، تأكد من بقائه مرئياً بأناقة
-                    if(el.tagName.toLowerCase() === 'li') {
-                        el.style.marginBottom = "12px";
-                    }
                 } else {
                     el.style.display = "none";
                 }
@@ -765,6 +860,17 @@
         function closeMedal() {
             document.getElementById('medalModal').classList.remove('open');
         }
+
+        // تحديث الوقت والتاريخ بشكل تلقائي ومستمر في الفوتر
+        function updateRoyalClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('ar-EG', options);
+            const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('royalClock').innerText = `التاريخ الملكي: ${dateStr} | الوقت الحاضر: ${timeStr}`;
+        }
+        setInterval(updateRoyalClock, 1000);
+        updateRoyalClock();
 
         window.onclick = function(event) {
             const modal = document.getElementById('medalModal');
