@@ -303,7 +303,7 @@
         .modal.open .modal-content { transform: scale(1); }
         .modal-title { font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 15px; border-bottom: 1px dashed var(--royal-gold); padding-bottom: 10px; }
         .modal-body { font-size: 1.15rem; line-height: 1.8; color: var(--parchment); margin-bottom: 25px; }
-        .modal-close { background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment); padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; [...] }
+        .modal-close { background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment); padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: var(--transition); }
         .modal-close:hover { background: var(--royal-gold); color: var(--bg-feudal); }
 
         footer {
@@ -384,7 +384,7 @@
                 <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
                 <h3>📜 نبذة عن الموسم</h3>
                 <p class="intro-text">
-                    يأتي هذا الموسم من "أسياد العروش" ليعيد صياغة مفاهيم الملاحم التفاعلية، متجاوزاً الأنظمة التقلي[...]
+                    يأتي هذا الموسم من "أسياد العروش" ليعيد صياغة مفاهيم الملاحم التفاعلية، متجاوزاً الأنظمة التقليدية في مملكة الليل، ليقدم هيكلة تنافسية غير مسبوقة تضع النقابات والكتائب في اختبار حقيقي للولاء والتنظيم وإثبات الجدارة.
                 </p>
             </div>
 
@@ -392,7 +392,7 @@
                 <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
                 <h3>🔥 حكاية الرماد والفينيق</h3>
                 <p class="intro-text">
-                    في غياهب العصور الملكية، كادت عروش المملكة أن تنطفئ وتتحول إلى رماد هامد بعد صراعات طويلة عشوائ[...]
+                    في غياهب العصور الملكية، كادت عروش المملكة أن تنطفئ وتتحول إلى رماد هامد بعد صراعات طويلة عشوائية أهلكت الموارد. ومن قلب ذلك الرماد، نهض نظام أسياد العروش ليرسخ قواعد التفاعل الصارمة ويعيد هيكلة النقابات تحت مظلة قوانين لا تقبل العبث، لتعود هيبة الممالك إلى نصابها.
                 </p>
             </div>
         </div>
@@ -432,6 +432,7 @@
             <div class="parchment-card">
                 <h2>قاعة الكتائب الخمسة الأساسية</h2>
                 <div class="battalions-grid">
+                    
                     <div class="battalion-card">
                         <div class="battalion-header">
                             <div class="battalion-icon"><i class="fa-solid fa-futbol"></i></div>
@@ -440,8 +441,8 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الروح الرياضية', 'يُمنح للعضو الأكثر احتراماً للآراء وتجنب [...]
-                                <span class="medal-badge" onclick="openMedal('وسام المحلل التكتيكي', 'يُمنح للعضو صاحب أفضل تحليل فني للمباريا[...]
+                                <span class="medal-badge" onclick="openMedal('وسام الروح الرياضية', 'يُمنح للعضو الأكثر احتراماً للآراء وتجنب التعصب الأعمى، والتحلي بأخلاق الفرسان في النقاشات الرياضية.')"><i class="fa-solid fa-handshake"></i> الروح الرياضية</span>
+                                <span class="medal-badge" onclick="openMedal('وسام المحلل التكتيكي', 'يُمنح للعضو صاحب أفضل تحليل فني للمباريات وقدرة عالية على قراءة خطط المدربين.')"><i class="fa-solid fa-chart-pie"></i> المحلل التكتيكي</span>
                             </div>
                         </div>
                         <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>سوالف رياضية</span> و<span>تحليلات</span>.</div>
@@ -456,7 +457,8 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الغيمر الأسطوري', 'يُمنح لصاحب الأداء الفذ في البطولات.')"><i class=[...]
+                                <span class="medal-badge" onclick="openMedal('وسام الغيمر الأسطوري', 'يُمنح لصاحب الأداء الفذ في البطولات وتصدر لوائح الترتيب.')"><i class="fa-solid fa-trophy"></i> الغيمر الأسطوري</span>
+                                <span class="medal-badge" onclick="openMedal('وسام العقل المدبر', 'يُمنح لمن يضع الاستراتيجيات الماكرة التي تقود فريقه للانتصار.')"><i class="fa-solid fa-brain"></i> العقل المدبر</span>
                             </div>
                         </div>
                         <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>بطولات وتحديات جيمنج</span>.</div>
@@ -471,9 +473,11 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الريشة الذهبية', 'يعطى لصاحب أرقى تصميم ومونتاج.')"><i class="fa-solid[...]
+                                <span class="medal-badge" onclick="openMedal('وسام الريشة الذهبية', 'يعطى لصاحب أرقى تصميم ومونتاج يعكس هوية المملكة البصرية.')"><i class="fa-solid fa-pen-nib"></i> الريشة الذهبية</span>
+                                <span class="medal-badge" onclick="openMedal('وسام الإلهام الفني', 'لمن يقدم أفكاراً فنية إبداعية ومخطوطات لا مثيل لها.')"><i class="fa-solid fa-wand-magic-sparkles"></i> الإلهام الفني</span>
                             </div>
                         </div>
+                        <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>تصاميم، مونتاج، وإبداعات</span>.</div>
                         <a href="https://chat.whatsapp.com/talents" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
                     </div>
 
@@ -485,9 +489,11 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام النقد الذهبي', 'للمراجعات العميقة للأفلام.')"><i class="fa-solid fa-award"[...]
+                                <span class="medal-badge" onclick="openMedal('وسام النقد الذهبي', 'للمراجعات العميقة للأفلام والمسلسلات وتحليل الحبكة الدرامية.')"><i class="fa-solid fa-star"></i> النقد الذهبي</span>
+                                <span class="medal-badge" onclick="openMedal('وسام عين المخرج', 'لمن يلتقط الجماليات البصرية وزوايا الإخراج المخفية.')"><i class="fa-solid fa-video"></i> عين المخرج</span>
                             </div>
                         </div>
+                        <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>نقاشات الأفلام والمراجعات</span>.</div>
                         <a href="https://chat.whatsapp.com/cinema" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
                     </div>
 
@@ -499,9 +505,11 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام مؤرخ الفصول', 'لمن يستخرج التفاصيل المخبأة في الفصول.')"><i class=[...]
+                                <span class="medal-badge" onclick="openMedal('وسام مؤرخ الفصول', 'لمن يستخرج التفاصيل المخبأة في الفصول ويربط أحداث المانجا.')"><i class="fa-solid fa-book-journal-whills"></i> مؤرخ الفصول</span>
+                                <span class="medal-badge" onclick="openMedal('وسام سيد النظريات', 'للعضو الذي يبتكر أذكى النظريات والتوقعات لمسار القصة.')"><i class="fa-solid fa-lightbulb"></i> سيد النظريات</span>
                             </div>
                         </div>
+                        <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>تحليل الفصول ونقاشات الأنمي</span>.</div>
                         <a href="https://chat.whatsapp.com/manga" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
                     </div>
                 </div>
@@ -509,8 +517,8 @@
                 <div class="admin-section">
                     <h2 style="font-size: 1.8rem; text-align: center;">🏛️ العباءة القيادية للكتائب</h2>
                     <div class="admin-grid">
-                        <div class="admin-card"><h3>درع القائد الإداري</h3><p>الإشراف العالي والكامل للكتائب الـ 5.</p></div>
-                        <div class="admin-card"><h3>درع النائب الإداري</h3><p>المساندة الكاملة وجداول البيانات.</p></div>
+                        <div class="admin-card"><h3>درع القائد الإداري</h3><p>الإشراف العالي والكامل للكتائب الـ 5 والبت في القرارات.</p></div>
+                        <div class="admin-card"><h3>درع النائب الإداري</h3><p>المساندة الكاملة وجداول البيانات للأنشطة.</p></div>
                         <div class="admin-card"><h3>درع المشرف الإداري</h3><p>رصد الإنذارات وضبط المخالفات السلوكية.</p></div>
                     </div>
                 </div>
@@ -522,7 +530,7 @@
                 <h2>دروع الأعضاء والمجالس الفردية</h2>
                 <div class="grid-subsections">
                     <div class="sub-box">
-                        <h3><i class="fa-solid fa-shield-cat"></i> درع القائد والنائب</h3>
+                        <h3><i class="fa-solid fa-shield-halved"></i> درع القائد والنائب</h3>
                         <p>يمنح لأفضل قائد نقابة ونائب بناءً على إدارة شؤون الأعضاء والتواجد الدائم.</p>
                     </div>
                     <div class="sub-box">
@@ -539,8 +547,9 @@
                 <div class="law-box" style="background: rgba(74, 18, 26, 0.3);">
                     <h4>⚠️ ضوابط رصد السبام والمحظورات:</h4>
                     <ul>
-                        <li><strong>الرسائل المتتالية:</strong> إرسال 4 رسائل فما فوق في آن واحد دون انتظار يُعتبر سبام صارخ.</li>
-                        <li><strong>الرسائل عديمة الفائدة:</strong> إرسال ملصقات عشوائية أو أحرف متكررة مبهمة لتضخيم العداد.</li>
+                        <li><strong>الرسائل المتتالية:</strong> إرسال 4 رسائل فما فوق في آن واحد دون انتظار يُعتبر سبام صارخ ومخالفة لقوانين المملكة.</li>
+                        <li><strong>الرسائل العشوائية:</strong> إرسال ملصقات متكررة بكثافة أو أحرف ورموز مبهمة لتضخيم العداد دون فائدة يعرض العضو للإنذار.</li>
+                        <li><strong>احترام الهوية:</strong> يمنع إثارة المشاحنات الشخصية أو الخروج عن الذوق العام في ساحات وقروبات النقاش.</li>
                     </ul>
                 </div>
             </div>
