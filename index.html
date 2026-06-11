@@ -9,11 +9,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;900&display=swap');
 
         :root {
-            --bg-feudal: #0f0806;       /* أسود فيكتوري داكن */
-            --parchment: #f5ebd2;      /* لون المخطوطات القديمة */
-            --royal-gold: #c5a059;     /* ذهبي عتيق */
-            --bright-gold: #f3e5ab;    /* وهج ذهبي مشع */
-            --velvet-crimson: #4a121a; /* أحمر مخملي ملكي */
+            --bg-feudal: #0f0806;
+            --parchment: #f5ebd2;
+            --royal-gold: #c5a059;
+            --bright-gold: #f3e5ab;
+            --velvet-crimson: #4a121a;
             --transition: all 0.3s ease;
         }
 
@@ -37,7 +37,6 @@
             font-family: 'Amiri', serif;
         }
 
-        /* --- الساحة الجانبية ☰ --- */
         .menu-toggle {
             position: fixed;
             top: 25px;
@@ -116,12 +115,10 @@
             color: var(--bright-gold);
         }
 
-        /* --- الهيدر العام --- */
         header { text-align: center; padding: 60px 20px 20px 20px; cursor: pointer; }
         header h1 { font-size: 3.8rem; color: var(--royal-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
         header p { font-size: 1.2rem; color: #bfa38a; margin-top: 5px; font-style: italic; }
 
-        /* --- شريط البحث المتطور الشامل 🔍 --- */
         .search-container {
             max-width: 700px;
             margin: 20px auto 40px auto;
@@ -176,773 +173,15 @@
             color: var(--parchment);
             border-bottom: 1px solid rgba(197, 160, 89, 0.1);
             transition: var(--transition);
-            cursor: pointer; /* جعل النتيجة قابلة للضغط كزر */
-        }
-        .search-result-item:hover { background: var(--velvet-crimson); color: white; }
-        .search-result-item i { color: var(--royal-gold); font-size: 1.1rem; }
-        .search-result-item small { color: #bfa38a; font-size: 0.8rem; margin-right: auto; } /* لتوضيح نوع النتيجة */
-        .no-results { padding: 15px; text-align: center; color: #8b7355; font-style: italic; }
-
-        /* --- الأقسام والحاويات الكبرى --- */
-        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* جعل كروت القصة والشرح منسابة عمودياً */
-        .intro-vertical-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .story-card, .season-card {
-            background: linear-gradient(145deg, #1d100d, #110806);
-            border: 2px solid var(--royal-gold);
-            padding: 35px;
-            border-radius: 6px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            position: relative;
-        }
-        .story-card h3, .season-card h3 {
-            color: var(--bright-gold);
-            font-size: 1.7rem;
-            margin-bottom: 15px;
-            text-align: center;
-            border-bottom: 1px double rgba(197, 160, 89, 0.3);
-            padding-bottom: 10px;
-        }
-        .intro-text {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            text-align: justify;
-            color: #e6dac2;
-        }
-
-        /* إخفاء الأقسام عن الصفحة الرئيسية افتراضياً */
-        .panel-section { display: none; margin-bottom: 50px; }
-        .panel-section.active-pane { display: block; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* زينة واستعراض كروت المخطوطات الداخلية للأقسام */
-        .parchment-card {
-            background: #1a0f0c; border: 3px double var(--royal-gold);
-            padding: 40px; border-radius: 4px; box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-            position: relative;
-        }
-        .parchment-card h2 {
-            color: var(--royal-gold); font-size: 2.2rem; margin-bottom: 25px;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 10px; text-align: center;
-        }
-        .story-text { font-size: 1.25rem; line-height: 2; text-align: justify; color: #e6dac2; }
-
-        .grid-subsections { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; }
-        @media (max-width: 600px) { .grid-subsections { grid-template-columns: 1fr; } }
-
-        .sub-box {
-            background: rgba(74, 18, 26, 0.2); border: 1px solid var(--royal-gold);
-            border-radius: 6px; padding: 25px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); transition: var(--transition);
-        }
-        .sub-box h3 { color: var(--bright-gold); font-size: 1.5rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-
-        .law-box {
-            background: #241115; border-right: 5px solid var(--royal-gold);
-            padding: 20px; margin-top: 25px; border-radius: 0 4px 4px 0;
-        }
-        .law-box h4 { color: var(--royal-gold); font-size: 1.2rem; margin-bottom: 10px; }
-        .law-box ul { list-style-type: square; padding-right: 20px; line-height: 1.7; }
-        .law-box li { margin-bottom: 8px; font-size: 1.05rem; }
-
-        /* تجميل باقة كروت الكتائب الـ 5 بقاعة الكتائب */
-        .battalions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
-        .battalion-card {
-            background: linear-gradient(135deg, #161112, #211514); border: 2px solid var(--royal-gold);
-            border-radius: 6px; padding: 25px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .battalion-header { display: flex; align-items: center; gap: 15px; border-bottom: 1px double rgba(197, 160, 89, 0.3); padding-bottom: 15px; margin-bottom: 15px; }
-        .battalion-icon { font-size: 2.2rem; color: var(--royal-gold); }
-        .battalion-title { font-size: 1.6rem; color: var(--bright-gold); }
-        
-        .medals-container {
-            background: rgba(0,0,0,0.4); padding: 15px; border-radius: 4px;
-            margin-bottom: 15px; border: 1px solid rgba(197,160,89,0.2);
-        }
-        .medals-title { font-size: 0.95rem; color: var(--royal-gold); margin-bottom: 10px; font-weight: bold; }
-        .medals-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .medal-badge {
-            background: linear-gradient(145deg, #3a1117, #1a0609); border: 1px solid var(--royal-gold);
-            color: var(--parchment); padding: 6px 10px; border-radius: 20px; font-size: 0.85rem;
-            cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 5px; font-weight: bold;
-        }
-        .medal-badge:hover { background: var(--royal-gold); color: var(--bg-feudal); }
-        .content-mix { font-size: 0.95rem; line-height: 1.6; color: #d2c5ab; margin-bottom: 20px; }
-        .content-mix span { display: inline-block; background: var(--velvet-crimson); color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 0.8rem; }
-
-        .join-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px;
-            background: linear-gradient(180deg, #4a121a, #2f0b10); border: 1px solid var(--royal-gold);
-            color: var(--parchment); text-decoration: none; font-weight: bold; border-radius: 4px; transition: var(--transition);
-        }
-        .join-btn:hover { background: linear-gradient(180deg, #6b1b26, #4a121a); color: var(--bright-gold); }
-
-        /* قسم الكتائب الإداري */
-        .admin-section {
-            background: linear-gradient(145deg, #101924, #080f16);
-            border: 3px double var(--royal-gold); padding: 35px; border-radius: 6px; margin-top: 40px;
-        }
-        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
-        .admin-card { background: rgba(16, 25, 36, 0.6); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 6px; padding: 20px; }
-        .admin-card h3 { color: var(--bright-gold); font-size: 1.35rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .admin-card ul { list-style: none; }
-        .admin-card li { font-size: 0.95rem; color: #cedce7; margin-bottom: 6px; }
-
-        /* الزخارف والفوتر والـ Modal */
-        .corner-decor { position: absolute; width: 15px; height: 15px; border: 2px solid var(--royal-gold); }
-        .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-        .top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-        .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
-
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
-            z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
-        .modal.open { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: #1e1310; border: 3px double var(--royal-gold); padding: 35px; width: 90%; max-width: 500px;
-            border-radius: 4px; text-align: center; position: relative; transform: scale(0.8); transition: transform 0.3s ease;
-        }
-        .modal.open .modal-content { transform: scale(1); }
-        .modal-title { font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 15px; border-bottom: 1px dashed var(--royal-gold); padding-bottom: 10px; }
-        .modal-body { font-size: 1.15rem; line-height: 1.8; color: var(--parchment); margin-bottom: 25px; }
-        .modal-close { background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment); padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; }
-
-        footer {
-            background: #090403; border-top: 2px solid var(--royal-gold); padding: 30px 20px; text-align: center; color: #bfa38a; font-size: 1rem; margin-top: 80px; position: relative;
-        }
-        footer .credits-brand { color: var(--bright-gold); font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; }
-        footer .time-stamp { font-size: 0.9rem; color: #8b7355; margin-top: 8px; display: inline-block; }
-
-        .overlay-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(3px); z-index: 998; display: none; }
-        .overlay-bg.active { display: block; }
-    </style>
-</head>
-<body>
-
-    <button class="menu-toggle" onclick="toggleSidebar()">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <div class="overlay-bg" id="overlay" onclick="toggleSidebar()"></div>
-
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <h2>الساحة الجانبية للمملكة</h2>
-        </div>
-
-        <div class="sidebar-section-title">🧭 تصفح لوحات الدستور</div>
-        <ul class="sidebar-menu">
-            <li><a href="#" id="homeLink" class="active-link" onclick="viewPane('home', event)"><i class="fa-solid fa-house-chimney"></i> الشاشة الرئيسية للموقع</a></li>
-            <li><a href="#" onclick="viewPane('guilds-thrones', event)"><i class="fa-solid fa-chess-king"></i> عروش النقابات التفاعلية</a></li>
-            <li><a href="#" onclick="viewPane('battalions-section', event)"><i class="fa-solid fa-shield-halved"></i> قاعة الكتائب والأوسمة</a></li>
-            <li><a href="#" onclick="viewPane('members-shields', event)"><i class="fa-solid fa-medal"></i> دروع الأعضاء والمجالس</a></li>
-            <li><a href="#" onclick="viewPane('interaction-rules', event)"><i class="fa-solid fa-gavel"></i> ميثاق قوانين السبام</a></li>
-        </ul>
-
-        <div class="sidebar-section-title">🛡️ روابط وإعلانات الكتائب</div>
-        <ul class="sidebar-menu">
-            <li><a href="https://chat.whatsapp.com/sports" target="_blank"><i class="fa-solid fa-futbol"></i> رابط كتيبة الرياضة</a></li>
-            <li><a href="https://chat.whatsapp.com/gaming" target="_blank"><i class="fa-solid fa-gamepad"></i> رابط كتيبة الألعاب</a></li>
-            <li><a href="https://chat.whatsapp.com/talents" target="_blank"><i class="fa-solid fa-palette"></i> رابط كتيبة المواهب</a></li>
-            <li><a href="https://chat.whatsapp.com/cinema" target="_blank"><i class="fa-solid fa-film"></i> رابط كتيبة السينما</a></li>
-            <li><a href="https://chat.whatsapp.com/manga" target="_blank"><i class="fa-solid fa-book-open"></i> رابط كتيبة المانجا</a></li>
-            <li><a href="https://example.com/ads" target="_blank" style="color: #ffcc00;"><i class="fa-solid fa-bullhorn"></i> بوق إعلانات الكتائب</a></li>
-        </ul>
-
-        <div class="sidebar-section-title">👑 استقبال طلبات النقابات (6 روابط)</div>
-        <ul class="sidebar-menu">
-            <li><a href="https://example.com/guild1" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الأولى</a></li>
-            <li><a href="https://example.com/guild2" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الثانية</a></li>
-            <li><a href="https://example.com/guild3" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الثالثة</a></li>
-            <li><a href="https://example.com/guild4" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الرابعة</a></li>
-            <li><a href="https://example.com/guild5" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة الخامسة</a></li>
-            <li><a href="https://example.com/guild6" target="_blank"><i class="fa-solid fa-scroll"></i> استقبال النقابة السادسة</a></li>
-        </ul>
-
-        <div class="sidebar-section-title">📊 المنصات واللوحات الملكية</div>
-        <ul class="sidebar-menu">
-            <li><a href="https://example.com/results" target="_blank" style="color: #5bc0be;"><i class="fa-solid fa-square-poll-horizontal"></i> موقع لوحة النتائج</a></li>
-           <li><a href="ads.html" style="color: #ff7f50;"><i class="fa-solid fa-fire-burner"></i> موقع إعلانات التحديات</a></li>
-            <li><a href="https://example.com/newspaper" target="_blank" style="color: #a984e7;"><i class="fa-solid fa-newspaper"></i> صحيفة المملكة الكبرى</a></li>
-        </ul>
-    </nav>
-
-    <header onclick="viewPane('home')">
-        <h1>أسياد العروش</h1>
-        <p>المنافسة الكبرى والموسم الملحمي للممالك والنقابات والكتائب</p>
-    </header>
-
-    <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="mainSearch" placeholder="اكتب اسم الرابط، القسم، أو الوسام للبحث في كل المملكة..." onkeyup="searchEntireSite()">
-        <div class="search-results-box" id="searchResults"></div>
-    </div>
-
-    <main class="main-wrapper">
-
-        <div id="homeSection" class="intro-vertical-flex">
-            <div class="season-card">
-                <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
-                <h3>📜 نبذة عن الموسم</h3>
-                <p class="intro-text">
-                    يأتي هذا الموسم من "أسياد العروش" ليعيد صياغة مفاهيم الملاحم التفاعلية، متجاوزاً الأنظمة التقليدية ومقدماً فكرة ثورية تجمع بين ولاء النقابات وحرية التيمات المستقلة. تتوزع ساحات المواجهة عبر كتائب خمس متخصصة؛ حيث لا تُقاس السيادة هنا بكثرة الحشود، بل بدقة التخطيط، والنشاط المستمر، وحصد أوسمة الشرف الذهبية في مجالات الإبداع المختلفة لإثبات الأحقية بالجلوس على العرش.
-                </p>
-            </div>
-
-            <div class="story-card">
-                <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
-                <h3>🔥 حكاية الرماد والفينيق</h3>
-                <p class="intro-text">
-                    في غياهب العصور الملكية، كادت عروش المملكة أن تنطفئ وتتحول إلى رماد هامد بعد صراعات طويلة عشوائية. وتقول المخطوطات القديمة إن القائد الأسطوري **"ماركو الفينيق"** حلق عالياً فوق القلاع الخمس، باسطاً أجنحته المشتعلة بنيران التجدد؛ ليعلن بدء حقبة جديدة لا ترحم المتخاذلين. أقسم **"ماركو"** ألا يمنح العرش إلا للنقابات والتيمات التي تملك القدرة على النهوض من وسط الركود وبث الحماس والكلمات الحية مجدداً، لتصبح نيران الفينيق هي الشعلة الرمزية التي تلهب منافسات هذا الموسم وتحدد أسياد العروش الحقيقيين.
-                </p>
-            </div>
-        </div>
-
-        <div id="guilds-thrones" class="panel-section">
-            <div class="parchment-card">
-                <h2>عروش النقابات (عروش التفاعل)</h2>
-                <div class="grid-subsections">
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-fire" style="color: #ff4500;"></i> العرش الناري</h3>
-                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر حشداً وحصداً للتفاعل الإجمالي في الموسم ككل.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-droplet" style="color: #00ccff;"></i> العرش المائي</h3>
-                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر تفاعلاً في القروب الأساسي للنقابة.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-wind" style="color: #ffffff;"></i> العرش الهوائي</h3>
-                        <p><strong>الهدف:</strong> يُمنح للنقابة الأكثر تفاعلاً في قروب الساحة بالفعاليات الطويلة.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-earth-americas" style="color: #8b5a2b;"></i> العرش الأرضي</h3>
-                        <p><strong>الهدف:</strong> يُمنح لأكثر نقابة يملك أعضاؤها تفاعلاً داخل أرجاء كتائب المملكة.</p>
-                    </div>
-                </div>
-                <div class="law-box">
-                    <h4>⚠️ ميثاق عروش التفاعل:</h4>
-                    <ul>
-                        <li>القروب الأساسي مخصص للنقاشات العادية ويمنع استخدام المسابقات فيه.</li>
-                        <li>قروب الساحة مخصص للمسابقات الطويلة والفعاليات فقط.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="battalions-section" class="panel-section">
-            <div class="parchment-card">
-                <h2>قاعة الكتائب الخمسة الأساسية</h2>
-                <div class="battalions-grid">
-                    <div class="battalion-card">
-                        <div class="battalion-header">
-                            <div class="battalion-icon"><i class="fa-solid fa-futbol"></i></div>
-                            <div class="battalion-title">كتيبة الرياضة</div>
-                        </div>
-                        <div class="medals-container">
-                            <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
-                            <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الروح الرياضية', 'يُمنح للعضو الأكثر احتراماً للآراء وتجنب التعصب.')"><i class="fa-solid fa-award"></i> الروح الرياضية</span>
-                                <span class="medal-badge" onclick="openMedal('وسام المحلل التكتيكي', 'يُمنح للعضو صاحب أفضل تحليل فني للمباريات.')"><i class="fa-solid fa-award"></i> المحلل التكتيكي</span>
-                            </div>
-                        </div>
-                        <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>سوالف رياضية</span> و<span>تحليلات</span>.</div>
-                        <a href="https://chat.whatsapp.com/sports" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
-                    </div>
-
-                    <div class="battalion-card">
-                        <div class="battalion-header">
-                            <div class="battalion-icon"><i class="fa-solid fa-gamepad"></i></div>
-                            <div class="battalion-title">كتيبة الألعاب</div>
-                        </div>
-                        <div class="medals-container">
-                            <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
-                            <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الغيمر الأسطوري', 'يُمنح لصاحب الأداء الفذ في البطولات.')"><i class="fa-solid fa-award"></i> الغيمر الأسطوري</span>
-                            </div>
-                        </div>
-                        <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>بطولات وتحديات جيمنج</span>.</div>
-                        <a href="https://chat.whatsapp.com/gaming" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
-                    </div>
-
-                    <div class="battalion-card">
-                        <div class="battalion-header">
-                            <div class="battalion-icon"><i class="fa-solid fa-palette"></i></div>
-                            <div class="battalion-title">كتيبة المواهب</div>
-                        </div>
-                        <div class="medals-container">
-                            <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
-                            <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الريشة الذهبية', 'يعطى لصاحب أرقى تصميم ومونتاج.')"><i class="fa-solid fa-award"></i> الريشة الذهبية</span>
-                            </div>
-                        </div>
-                        <a href="https://chat.whatsapp.com/talents" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
-                    </div>
-
-                    <div class="battalion-card">
-                        <div class="battalion-header">
-                            <div class="battalion-icon"><i class="fa-solid fa-film"></i></div>
-                            <div class="battalion-title">كتيبة السينما</div>
-                        </div>
-                        <div class="medals-container">
-                            <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
-                            <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام النقد الذهبي', 'للمراجعات العميقة للأفلام.')"><i class="fa-solid fa-award"></i> النقد الذهبي</span>
-                            </div>
-                        </div>
-                        <a href="https://chat.whatsapp.com/cinema" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
-                    </div>
-
-                    <div class="battalion-card">
-                        <div class="battalion-header">
-                            <div class="battalion-icon"><i class="fa-solid fa-book-open"></i></div>
-                            <div class="battalion-title">كتيبة المانجا</div>
-                        </div>
-                        <div class="medals-container">
-                            <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
-                            <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام مؤرخ الفصول', 'لمن يستخرج التفاصيل المخبأة الفصول.')"><i class="fa-solid fa-award"></i> مؤرخ الفصول</span>
-                            </div>
-                        </div>
-                        <a href="https://chat.whatsapp.com/manga" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
-                    </div>
-                </div>
-
-                <div class="admin-section">
-                    <h2 style="font-size: 1.8rem; text-align: center;">🏛️ العباءة القيادية للكتائب</h2>
-                    <div class="admin-grid">
-                        <div class="admin-card"><h3>درع القائد الإداري</h3><p>الإشراف العالي والكامل للكتائب الـ 5.</p></div>
-                        <div class="admin-card"><h3>درع النائب الإداري</h3><p>المساندة الكاملة وجداول البيانات.</p></div>
-                        <div class="admin-card"><h3>درع المشرف الإداري</h3><p>رصد الإنذارات وضبط المخالفات السلوكية.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="members-shields" class="panel-section">
-            <div class="parchment-card">
-                <h2>دروع الأعضاء والمجالس الفردية</h2>
-                <div class="grid-subsections">
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-shield-cat"></i> درع القائد والنائب</h3>
-                        <p>يمنح لأفضل قائد نقابة ونائب بناءً على إدارة شؤون الأعضاء والتواجد الدائم.</p>
-                    </div>
-                    <div class="sub-box">
-                        <h3><i class="fa-solid fa-vault"></i> درع الوزير</h3>
-                        <p>تُمنح لوزير بنك النقابة المسؤول عن تقديم الدعم اللوجستي المستمر.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="interaction-rules" class="panel-section">
-            <div class="parchment-card">
-                <h2>📜 ميثاق ودستور قوانين التفاعل</h2>
-                <div class="law-box" style="background: rgba(74, 18, 26, 0.3);">
-                    <h4>⚠️ ضوابط رصد السبام والمحظورات:</h4>
-                    <ul>
-                        <li><strong>الرسائل المتتالية:</strong> إرسال 4 رسائل فما فوق في آن واحد دون انتظار يُعتبر سبام صارخ.</li>
-                        <li><strong>الرسائل عديمة الفائدة:</strong> إرسال ملصقات عشوائية أو أحرف متكررة مبهمة لتضخيم العداد.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <footer>
-        <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
-        <p class="credits-brand">جميع الحقوق محفوظة ومسجلة © لـ لابوبو</p>
-        <p>ميثاق أسياد العروش والكتائب - تم التنظيم والتطوير بأعلى المعايير الملكية</p>
-        <div class="time-stamp" id="royalClock">جاري تحميل التاريخ والوقت الملكي...</div>
-    </footer>
-
-    <div class="modal" id="medalModal">
-        <div class="modal-content">
-            <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
-            <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
-            <h3 class="modal-title" id="modalTitle">اسم الوسام</h3>
-            <div class="modal-body" id="modalBody">معايير التقييم تظهر هنا...</div>
-            <button class="modal-close" onclick="closeMedal()">إغلاق المخطوطة</button>
-        </div>
-    </div>
-
-    <script>
-        // التبديل للمنيو الجانبي
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        // دالة التنقل بين الأقسام بذكاء
-        function viewPane(paneId, event) {
-            if(event) event.preventDefault();
-            
-            document.getElementById('homeSection').style.display = 'none';
-            const sections = document.querySelectorAll('.panel-section');
-            sections.forEach(sec => sec.classList.remove('active-pane'));
-            
-            const menuLinks = document.querySelectorAll('.sidebar-menu a');
-            menuLinks.forEach(link => link.classList.remove('active-link'));
-
-            if(paneId === 'home') {
-                document.getElementById('homeSection').style.display = 'flex';
-                document.getElementById('homeLink').classList.add('active-link');
-            } else {
-                const target = document.getElementById(paneId);
-                if(target) {
-                    target.classList.add('active-pane');
-                    if(event && event.currentTarget) {
-                        event.currentTarget.classList.add('active-link');
-                    }
-                }
-            }
-            
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ==========================================
-        // محرك البحث الشامل والذكي لكل أرجاء الموقع 🔍
-        // ==========================================
-        function searchEntireSite() {
-            const query = document.getElementById('mainSearch').value.toLowerCase().trim();
-            const resultsContainer = document.getElementById('searchResults');
-            
-            resultsContainer.innerHTML = '';
-            
-            if (query === '') {
-                resultsContainer.style.display = 'none';
-                return;
-            }
-            
-            let foundMatches = 0;
-
-            // دالة مساعدة لإنشاء وعرض نتيجة البحث برمجياً كزر تفاعلي
-            function createResultItem(text, iconClass, typeLabel, onClickAction) {
-                foundMatches++;
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'search-result-item';
-                resultDiv.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span> <small>${typeLabel}</small>`;
-                
-                // عند الضغط على النتيجة، يتنفذ الأمر المناسب لنوعها
-                resultDiv.onclick = onClickAction;
-                resultsContainer.appendChild(resultDiv);
-            }
-
-            // 1. مسح الروابط الخارجية (كتائب، إعلانات، نقابات)
-            const externalLinks = document.querySelectorAll('.sidebar-menu a[target="_blank"], .join-btn');
-            externalLinks.forEach(link => {
-                const text = link.innerText.trim();
-                if (text.toLowerCase().includes(query)) {
-                    const icon = link.querySelector('i') ? link.querySelector('i').className : 'fa-solid fa-link';
-                    const href = link.getAttribute('href');
-                    
-                    createResultItem(text, icon, 'رابط خارجي', () => {
-                        window.open(href, '_blank');
-                        resultsContainer.style.display = 'none';
-                    });
-                }
-            });
-
-            // 2. مسح الأقسام الرئيسية في المنيو (مثل عروش النقابات، قاعة الكتائب)
-            const internalSections = document.querySelectorAll('.sidebar-menu a[onclick*="viewPane"]');
-            internalSections.forEach(link => {
-                const text = link.innerText.trim();
-                if (link.id !== 'homeLink' && text.toLowerCase().includes(query)) {
-                    const icon = link.querySelector('i') ? link.querySelector('i').className : 'fa-solid fa-folder-open';
-                    
-                    // استخراج الآي دي الخاص بالقسم من أمر الأون كليك
-                    const onclickAttr = link.getAttribute('onclick');
-                    const match = onclickAttr.match(/viewPane\('([^']+)'/);
-                    if (match) {
-                        const paneId = match[1];
-                        createResultItem(text, icon, 'قسم رئيسي', () => {
-                            viewPane(paneId);
-                            resultsContainer.style.display = 'none';
-                            document.getElementById('mainSearch').value = '';
-                        });
-                    }
-                }
-            });
-
-            // 3. المسح العميق لداخل الأقسام (العناوين الفرعية، الأوسمة، الدروع، الكتائب الفردية)
-            const deepContent = document.querySelectorAll('.panel-section h2, .sub-box h3, .battalion-title, .medal-badge, .admin-card h3');
-            deepContent.forEach(element => {
-                const text = element.innerText.trim();
-                if (text.toLowerCase().includes(query)) {
-                    // تحديد القسم الأب المخفي الذي يتبع له هذا العنصر لفتحه
-                    const parentSection = element.closest('.panel-section');
-                    if (parentSection) {
-                        const paneId = parentSection.id;
-                        const icon = element.querySelector('i') ? element.querySelector('i').className : 'fa-solid fa-magnifying-glass';
-                        
-                        createResultItem(text, icon, 'محتوى داخلي', () => {
-                            // فتح القسم المخفي أولاً
-                            viewPane(paneId);
-                            resultsContainer.style.display = 'none';
-                            document.getElementById('mainSearch').value = '';
-                            
-                            // ثم النزول السلس للعنصر نفسه بعد مهلة قصيرة ليتم تجهيز العرض
-                            setTimeout(() => {
-                                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                // تأثير وميض خفيف للعنصر للفت الانتباه
-                                element.style.transition = 'all 0.5s';
-                                element.style.textShadow = '0 0 15px var(--bright-gold)';
-                                setTimeout(() => element.style.textShadow = 'none', 1500);
-                            }, 100);
-                        });
-                    }
-                }
-            });
-
-            // إظهار صندوق النتائج أو رسالة الاعتذار
-            resultsContainer.style.display = 'block';
-            if (foundMatches === 0) {
-                resultsContainer.innerHTML = '<div class="no-results">عذراً، لم يتم العثور على أي تطابق في أنحاء المملكة...</div>';
-            }
-        }
-
-        // الأوسمة المنبثقة
-        function openMedal(title, criteria) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerText = criteria;
-            document.getElementById('medalModal').classList.add('open');
-        }
-        function closeMedal() {
-            document.getElementById('medalModal').classList.remove('open');
-        }
-
-        // تحديث الوقت الملكي التلقائي
-        function updateRoyalClock() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateStr = now.toLocaleDateString('ar-EG', options);
-            const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('royalClock').innerText = `التاريخ: ${dateStr} | الوقت الحاضر: ${timeStr}`;
-        }
-        setInterval(updateRoyalClock, 1000);
-        updateRoyalClock();
-
-        // إغلاق الصناديق التفاعلية عند الضغط في الخارج
-        window.onclick = function(event) {
-            const searchBox = document.getElementById('searchResults');
-            const searchInput = document.getElementById('mainSearch');
-            const modal = document.getElementById('medalModal');
-            
-            if (event.target !== searchBox && event.target !== searchInput) {
-                searchBox.style.display = 'none';
-            }
-            if (event.target == modal) {
-                closeMedal();
-            }
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسياد العروش | Masters of Thrones</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;900&display=swap');
-
-        :root {
-            --bg-feudal: #0f0806;       /* أسود فيكتوري داكن */
-            --parchment: #f5ebd2;      /* لون المخطوطات القديمة */
-            --royal-gold: #c5a059;     /* ذهبي عتيق */
-            --bright-gold: #f3e5ab;    /* وهج ذهبي مشع */
-            --velvet-crimson: #4a121a; /* أحمر مخملي ملكي */
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-feudal);
-            color: var(--parchment);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 30%, #251216 0%, #0f0806 70%);
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3, h4, .throne-title {
-            font-family: 'Amiri', serif;
-        }
-
-        /* --- الساحة الجانبية ☰ --- */
-        .menu-toggle {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            background: var(--velvet-crimson);
-            border: 2px solid var(--royal-gold);
-            color: var(--royal-gold);
-            width: 50px;
-            height: 50px;
-            border-radius: 5px;
-            font-size: 1.5rem;
             cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.6);
-            transition: var(--transition);
-        }
-        .menu-toggle:hover {
-            box-shadow: 0 0 20px var(--royal-gold);
-            color: var(--bright-gold);
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -340px;
-            width: 340px;
-            height: 100%;
-            background: #140b08;
-            border-left: 3px double var(--royal-gold);
-            z-index: 999;
-            padding: 90px 15px 30px 15px;
-            transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-            overflow-y: auto;
-        }
-        .sidebar.active { right: 0; }
-
-        .sidebar-brand {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 1px dashed var(--royal-gold);
-            padding-bottom: 15px;
-        }
-        .sidebar-brand h2 { color: var(--royal-gold); font-size: 1.6rem; }
-
-        .sidebar-section-title {
-            font-size: 0.95rem;
-            color: var(--bright-gold);
-            background: rgba(74, 18, 26, 0.5);
-            padding: 6px 12px;
-            margin: 20px 0 10px 0;
-            border-right: 3px solid var(--royal-gold);
-            font-weight: bold;
-        }
-
-        .sidebar-menu { list-style: none; }
-        .sidebar-menu li { margin-bottom: 8px; }
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #dfd3ba;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 0.95rem;
-            border-radius: 4px;
-            border: 1px solid transparent;
-            transition: var(--transition);
-        }
-        .sidebar-menu a:hover, .sidebar-menu a.active-link {
-            background: #221214;
-            border-color: var(--royal-gold);
-            color: var(--bright-gold);
-        }
-
-        /* --- الهيدر العام --- */
-        header { text-align: center; padding: 60px 20px 20px 20px; cursor: pointer; }
-        header h1 { font-size: 3.8rem; color: var(--royal-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
-        header p { font-size: 1.2rem; color: #bfa38a; margin-top: 5px; font-style: italic; }
-
-        /* --- شريط البحث المتطور الشامل 🔍 --- */
-        .search-container {
-            max-width: 700px;
-            margin: 20px auto 40px auto;
-            position: relative;
-            padding: 0 20px;
-            z-index: 100;
-        }
-        .search-container input {
-            width: 100%;
-            padding: 16px 55px 16px 25px;
-            background: #1a0f0c;
-            border: 2px solid var(--royal-gold);
-            border-radius: 30px;
-            color: var(--parchment);
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-        }
-        .search-container input:focus {
-            border-color: var(--bright-gold);
-            box-shadow: 0 0 25px rgba(243,229,171,0.3);
-        }
-        .search-container .search-icon {
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--royal-gold);
-            font-size: 1.3rem;
-        }
-
-        .search-results-box {
-            position: absolute;
-            top: 100%;
-            left: 20px;
-            right: 20px;
-            background: #1a0f10;
-            border: 2px solid var(--royal-gold);
-            border-top: none;
-            border-radius: 0 0 15px 15px;
-            max-height: 350px;
-            overflow-y: auto;
-            display: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            margin-top: -5px;
-        }
-        .search-result-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 20px;
-            color: var(--parchment);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-            transition: var(--transition);
-            cursor: pointer; /* جعل النتيجة قابلة للضغط كزر */
         }
         .search-result-item:hover { background: var(--velvet-crimson); color: white; }
         .search-result-item i { color: var(--royal-gold); font-size: 1.1rem; }
-        .search-result-item small { color: #bfa38a; font-size: 0.8rem; margin-right: auto; } /* لتوضيح نوع النتيجة */
+        .search-result-item small { color: #bfa38a; font-size: 0.8rem; margin-right: auto; }
         .no-results { padding: 15px; text-align: center; color: #8b7355; font-style: italic; }
 
-        /* --- الأقسام والحاويات الكبرى --- */
         .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* جعل كروت القصة والشرح منسابة عمودياً */
         .intro-vertical-flex {
             display: flex;
             flex-direction: column;
@@ -973,12 +212,10 @@
             color: #e6dac2;
         }
 
-        /* إخفاء الأقسام عن الصفحة الرئيسية افتراضياً */
         .panel-section { display: none; margin-bottom: 50px; }
         .panel-section.active-pane { display: block; animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* زينة واستعراض كروت المخطوطات الداخلية للأقسام */
         .parchment-card {
             background: #1a0f0c; border: 3px double var(--royal-gold);
             padding: 40px; border-radius: 4px; box-shadow: 0 15px 45px rgba(0,0,0,0.6);
@@ -1007,7 +244,6 @@
         .law-box ul { list-style-type: square; padding-right: 20px; line-height: 1.7; }
         .law-box li { margin-bottom: 8px; font-size: 1.05rem; }
 
-        /* تجميل باقة كروت الكتائب الـ 5 بقاعة الكتائب */
         .battalions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
         .battalion-card {
             background: linear-gradient(135deg, #161112, #211514); border: 2px solid var(--royal-gold);
@@ -1039,7 +275,6 @@
         }
         .join-btn:hover { background: linear-gradient(180deg, #6b1b26, #4a121a); color: var(--bright-gold); }
 
-        /* قسم الكتائب الإداري */
         .admin-section {
             background: linear-gradient(145deg, #101924, #080f16);
             border: 3px double var(--royal-gold); padding: 35px; border-radius: 6px; margin-top: 40px;
@@ -1050,7 +285,6 @@
         .admin-card ul { list-style: none; }
         .admin-card li { font-size: 0.95rem; color: #cedce7; margin-bottom: 6px; }
 
-        /* الزخارف والفوتر والـ Modal */
         .corner-decor { position: absolute; width: 15px; height: 15px; border: 2px solid var(--royal-gold); }
         .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
         .top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
@@ -1069,7 +303,8 @@
         .modal.open .modal-content { transform: scale(1); }
         .modal-title { font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 15px; border-bottom: 1px dashed var(--royal-gold); padding-bottom: 10px; }
         .modal-body { font-size: 1.15rem; line-height: 1.8; color: var(--parchment); margin-bottom: 25px; }
-        .modal-close { background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment); padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; }
+        .modal-close { background: var(--velvet-crimson); border: 1px solid var(--royal-gold); color: var(--parchment); padding: 8px 25px; font-weight: bold; border-radius: 4px; cursor: pointer; [...] }
+        .modal-close:hover { background: var(--royal-gold); color: var(--bg-feudal); }
 
         footer {
             background: #090403; border-top: 2px solid var(--royal-gold); padding: 30px 20px; text-align: center; color: #bfa38a; font-size: 1rem; margin-top: 80px; position: relative;
@@ -1126,7 +361,7 @@
         <div class="sidebar-section-title">📊 المنصات واللوحات الملكية</div>
         <ul class="sidebar-menu">
             <li><a href="https://example.com/results" target="_blank" style="color: #5bc0be;"><i class="fa-solid fa-square-poll-horizontal"></i> موقع لوحة النتائج</a></li>
-            <li><a href="" style="color: #ff7f50;"><i class="fa-solid fa-fire-burner"></i> موقع إعلانات التحديات</a></li>
+            <li><a href="ads.html" target="_blank" style="color: #ff7f50;"><i class="fa-solid fa-fire-burner"></i> موقع إعلانات التحديات</a></li>
             <li><a href="https://example.com/newspaper" target="_blank" style="color: #a984e7;"><i class="fa-solid fa-newspaper"></i> صحيفة المملكة الكبرى</a></li>
         </ul>
     </nav>
@@ -1149,7 +384,7 @@
                 <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
                 <h3>📜 نبذة عن الموسم</h3>
                 <p class="intro-text">
-                    يأتي هذا الموسم من "أسياد العروش" ليعيد صياغة مفاهيم الملاحم التفاعلية، متجاوزاً الأنظمة التقليدية ومقدماً فكرة ثورية تجمع بين ولاء النقابات وحرية التيمات المستقلة. تتوزع ساحات المواجهة عبر كتائب خمس متخصصة؛ حيث لا تُقاس السيادة هنا بكثرة الحشود، بل بدقة التخطيط، والنشاط المستمر، وحصد أوسمة الشرف الذهبية في مجالات الإبداع المختلفة لإثبات الأحقية بالجلوس على العرش.
+                    يأتي هذا الموسم من "أسياد العروش" ليعيد صياغة مفاهيم الملاحم التفاعلية، متجاوزاً الأنظمة التقلي[...]
                 </p>
             </div>
 
@@ -1157,7 +392,7 @@
                 <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
                 <h3>🔥 حكاية الرماد والفينيق</h3>
                 <p class="intro-text">
-                    في غياهب العصور الملكية، كادت عروش المملكة أن تنطفئ وتتحول إلى رماد هامد بعد صراعات طويلة عشوائية. وتقول المخطوطات القديمة إن القائد الأسطوري **"ماركو الفينيق"** حلق عالياً فوق القلاع الخمس، باسطاً أجنحته المشتعلة بنيران التجدد؛ ليعلن بدء حقبة جديدة لا ترحم المتخاذلين. أقسم **"ماركو"** ألا يمنح العرش إلا للنقابات والتيمات التي تملك القدرة على النهوض من وسط الركود وبث الحماس والكلمات الحية مجدداً، لتصبح نيران الفينيق هي الشعلة الرمزية التي تلهب منافسات هذا الموسم وتحدد أسياد العروش الحقيقيين.
+                    في غياهب العصور الملكية، كادت عروش المملكة أن تنطفئ وتتحول إلى رماد هامد بعد صراعات طويلة عشوائ[...]
                 </p>
             </div>
         </div>
@@ -1205,8 +440,8 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الروح الرياضية', 'يُمنح للعضو الأكثر احتراماً للآراء وتجنب التعصب.')"><i class="fa-solid fa-award"></i> الروح الرياضية</span>
-                                <span class="medal-badge" onclick="openMedal('وسام المحلل التكتيكي', 'يُمنح للعضو صاحب أفضل تحليل فني للمباريات.')"><i class="fa-solid fa-award"></i> المحلل التكتيكي</span>
+                                <span class="medal-badge" onclick="openMedal('وسام الروح الرياضية', 'يُمنح للعضو الأكثر احتراماً للآراء وتجنب [...]
+                                <span class="medal-badge" onclick="openMedal('وسام المحلل التكتيكي', 'يُمنح للعضو صاحب أفضل تحليل فني للمباريا[...]
                             </div>
                         </div>
                         <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>سوالف رياضية</span> و<span>تحليلات</span>.</div>
@@ -1221,7 +456,7 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة (اضغط للعرض):</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الغيمر الأسطوري', 'يُمنح لصاحب الأداء الفذ في البطولات.')"><i class="fa-solid fa-award"></i> الغيمر الأسطوري</span>
+                                <span class="medal-badge" onclick="openMedal('وسام الغيمر الأسطوري', 'يُمنح لصاحب الأداء الفذ في البطولات.')"><i class=[...]
                             </div>
                         </div>
                         <div class="content-mix"><strong>المحتوى:</strong> تشمل <span>بطولات وتحديات جيمنج</span>.</div>
@@ -1236,7 +471,7 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام الريشة الذهبية', 'يعطى لصاحب أرقى تصميم ومونتاج.')"><i class="fa-solid fa-award"></i> الريشة الذهبية</span>
+                                <span class="medal-badge" onclick="openMedal('وسام الريشة الذهبية', 'يعطى لصاحب أرقى تصميم ومونتاج.')"><i class="fa-solid[...]
                             </div>
                         </div>
                         <a href="https://chat.whatsapp.com/talents" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
@@ -1250,7 +485,7 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام النقد الذهبي', 'للمراجعات العميقة للأفلام.')"><i class="fa-solid fa-award"></i> النقد الذهبي</span>
+                                <span class="medal-badge" onclick="openMedal('وسام النقد الذهبي', 'للمراجعات العميقة للأفلام.')"><i class="fa-solid fa-award"[...]
                             </div>
                         </div>
                         <a href="https://chat.whatsapp.com/cinema" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
@@ -1264,7 +499,7 @@
                         <div class="medals-container">
                             <div class="medals-title"><i class="fa-solid fa-medal"></i> الأوسمة:</div>
                             <div class="medals-list">
-                                <span class="medal-badge" onclick="openMedal('وسام مؤرخ الفصول', 'لمن يستخرج التفاصيل المخبأة الفصول.')"><i class="fa-solid fa-award"></i> مؤرخ الفصول</span>
+                                <span class="medal-badge" onclick="openMedal('وسام مؤرخ الفصول', 'لمن يستخرج التفاصيل المخبأة في الفصول.')"><i class=[...]
                             </div>
                         </div>
                         <a href="https://chat.whatsapp.com/manga" target="_blank" class="join-btn"><i class="fa-brands fa-whatsapp"></i> دخول الكتيبة</a>
@@ -1331,7 +566,6 @@
     </div>
 
     <script>
-        // التبديل للمنيو الجانبي
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -1339,7 +573,6 @@
             overlay.classList.toggle('active');
         }
 
-        // دالة التنقل بين الأقسام بذكاء
         function viewPane(paneId, event) {
             if(event) event.preventDefault();
             
@@ -1371,9 +604,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ==========================================
-        // محرك البحث الشامل والذكي لكل أرجاء الموقع 🔍
-        // ==========================================
         function searchEntireSite() {
             const query = document.getElementById('mainSearch').value.toLowerCase().trim();
             const resultsContainer = document.getElementById('searchResults');
@@ -1387,19 +617,15 @@
             
             let foundMatches = 0;
 
-            // دالة مساعدة لإنشاء وعرض نتيجة البحث برمجياً كزر تفاعلي
             function createResultItem(text, iconClass, typeLabel, onClickAction) {
                 foundMatches++;
                 const resultDiv = document.createElement('div');
                 resultDiv.className = 'search-result-item';
                 resultDiv.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span> <small>${typeLabel}</small>`;
-                
-                // عند الضغط على النتيجة، يتنفذ الأمر المناسب لنوعها
                 resultDiv.onclick = onClickAction;
                 resultsContainer.appendChild(resultDiv);
             }
 
-            // 1. مسح الروابط الخارجية (كتائب، إعلانات، نقابات)
             const externalLinks = document.querySelectorAll('.sidebar-menu a[target="_blank"], .join-btn');
             externalLinks.forEach(link => {
                 const text = link.innerText.trim();
@@ -1414,14 +640,11 @@
                 }
             });
 
-            // 2. مسح الأقسام الرئيسية في المنيو (مثل عروش النقابات، قاعة الكتائب)
             const internalSections = document.querySelectorAll('.sidebar-menu a[onclick*="viewPane"]');
             internalSections.forEach(link => {
                 const text = link.innerText.trim();
                 if (link.id !== 'homeLink' && text.toLowerCase().includes(query)) {
                     const icon = link.querySelector('i') ? link.querySelector('i').className : 'fa-solid fa-folder-open';
-                    
-                    // استخراج الآي دي الخاص بالقسم من أمر الأون كليك
                     const onclickAttr = link.getAttribute('onclick');
                     const match = onclickAttr.match(/viewPane\('([^']+)'/);
                     if (match) {
@@ -1435,27 +658,22 @@
                 }
             });
 
-            // 3. المسح العميق لداخل الأقسام (العناوين الفرعية، الأوسمة، الدروع، الكتائب الفردية)
             const deepContent = document.querySelectorAll('.panel-section h2, .sub-box h3, .battalion-title, .medal-badge, .admin-card h3');
             deepContent.forEach(element => {
                 const text = element.innerText.trim();
                 if (text.toLowerCase().includes(query)) {
-                    // تحديد القسم الأب المخفي الذي يتبع له هذا العنصر لفتحه
                     const parentSection = element.closest('.panel-section');
                     if (parentSection) {
                         const paneId = parentSection.id;
                         const icon = element.querySelector('i') ? element.querySelector('i').className : 'fa-solid fa-magnifying-glass';
                         
                         createResultItem(text, icon, 'محتوى داخلي', () => {
-                            // فتح القسم المخفي أولاً
                             viewPane(paneId);
                             resultsContainer.style.display = 'none';
                             document.getElementById('mainSearch').value = '';
                             
-                            // ثم النزول السلس للعنصر نفسه بعد مهلة قصيرة ليتم تجهيز العرض
                             setTimeout(() => {
                                 element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                // تأثير وميض خفيف للعنصر للفت الانتباه
                                 element.style.transition = 'all 0.5s';
                                 element.style.textShadow = '0 0 15px var(--bright-gold)';
                                 setTimeout(() => element.style.textShadow = 'none', 1500);
@@ -1465,14 +683,12 @@
                 }
             });
 
-            // إظهار صندوق النتائج أو رسالة الاعتذار
             resultsContainer.style.display = 'block';
             if (foundMatches === 0) {
                 resultsContainer.innerHTML = '<div class="no-results">عذراً، لم يتم العثور على أي تطابق في أنحاء المملكة...</div>';
             }
         }
 
-        // الأوسمة المنبثقة
         function openMedal(title, criteria) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalBody').innerText = criteria;
@@ -1482,7 +698,6 @@
             document.getElementById('medalModal').classList.remove('open');
         }
 
-        // تحديث الوقت الملكي التلقائي
         function updateRoyalClock() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -1493,7 +708,6 @@
         setInterval(updateRoyalClock, 1000);
         updateRoyalClock();
 
-        // إغلاق الصناديق التفاعلية عند الضغط في الخارج
         window.onclick = function(event) {
             const searchBox = document.getElementById('searchResults');
             const searchInput = document.getElementById('mainSearch');
