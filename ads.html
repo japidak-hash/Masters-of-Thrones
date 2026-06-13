@@ -12,28 +12,22 @@
       window.OneSignalDeferred = window.OneSignalDeferred || [];
       OneSignalDeferred.push(function(OneSignal) {
         OneSignal.init({
-          appId: "Bbeecfa2-c73a-4626-866a-6824d5f28c9c", // معرفك الخاص تم ربطه بنجاح
+          appId: "Bbeecfa2-c73a-4626-866a-6824d5f28c9c",
+          // تم تعطيل زر OneSignal الافتراضي لصالح الزر الملكي المخصص
           notifyButton: {
-            enable: true, 
-            position: 'bottom-left',
-            colors: {
-                'circle.background': '#c5a059',
-                'circle.foreground': '#0f0806',
-                'badge.background': '#4a121a',
-                'badge.foreground': 'white',
-                'pulse.color': '#c5a059'
-            },
-            text: {
-                'tip.state.unsubscribed': 'اشترك لتصلك قرارات المملكة عاجلاً',
-                'tip.state.subscribed': 'أنت مشترك في بوق الإعلانات',
-                'message.prenotify': 'انقر للاشتراك في إشعارات العروش العاجلة',
-                'message.action.subscribed': 'أهلاً بك! ستصلك الإعلانات فور صدورها.',
-                'dialog.main.title': 'إشعارات أسياد العروش',
-                'dialog.main.button.subscribe': 'اشترك الآن'
-            }
+            enable: false 
           }
         });
       });
+
+      // دالة تفعيل الإشعارات عند الضغط على الجرس الملكي
+      function subscribeToNotifications() {
+          window.OneSignalDeferred = window.OneSignalDeferred || [];
+          OneSignalDeferred.push(function(OneSignal) {
+              // استدعاء نافذة طلب الإذن (متوافق مع الإصدار 16)
+              OneSignal.Slidedown.promptPush();
+          });
+      }
     </script>
 
     <style>
@@ -62,6 +56,7 @@
         .ads-container {
             max-width: 850px;
             margin: 0 auto;
+            position: relative; /* لضمان ترتيب العناصر داخل الصفحة */
         }
 
         /* زر العودة للموقع الرئيسي */
@@ -161,6 +156,66 @@
             font-weight: bold;
             box-shadow: 0 0 10px rgba(255,0,0,0.5);
         }
+
+        /* ------------------------------------- */
+        /* تصميم زر الجرس الملكي العائم */
+        /* ------------------------------------- */
+        .royal-bell-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(145deg, #4a121a, #25080d);
+            border: 2px solid #c5a059;
+            color: #c5a059;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(197, 160, 89, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .royal-bell-btn:hover {
+            transform: scale(1.1);
+            color: #f3e5ab;
+            border-color: #f3e5ab;
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.6);
+        }
+
+        .royal-bell-btn i {
+            animation: bellRinging 4s infinite ease-in-out;
+        }
+
+        .bell-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background-color: #ff0000;
+            color: white;
+            font-size: 0.75rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 1px solid #140b08;
+            box-shadow: 0 0 5px rgba(255,0,0,0.5);
+        }
+
+        @keyframes bellRinging {
+            0%, 90%, 100% { transform: rotate(0); }
+            92% { transform: rotate(15deg); }
+            94% { transform: rotate(-15deg); }
+            96% { transform: rotate(10deg); }
+            98% { transform: rotate(-10deg); }
+        }
     </style>
 </head>
 <body>
@@ -187,8 +242,13 @@
                     <div class="ad-meta">بالأمس</div>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <button class="royal-bell-btn" id="registerNotificationBtn" onclick="subscribeToNotifications()" title="تفعيل إشعارات المملكة">
+        <i class="fa-solid fa-bell"></i>
+        <span class="bell-badge">!</span>
+    </button>
+
 </body>
 </html>
