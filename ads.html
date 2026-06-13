@@ -10,22 +10,25 @@
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(function(OneSignal) {
-        OneSignal.init({
-          appId: "Bbeecfa2-c73a-4626-866a-6824d5f28c9c",
-          // تم تعطيل زر OneSignal الافتراضي لصالح الزر الملكي المخصص
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "bbeecfa2-c73a-4626-866a-6824d5f28c9c",
+          safari_web_id: "web.onesignal.auto.054b4fc9-febb-45d1-b366-8fc183da0d9e",
           notifyButton: {
-            enable: false 
-          }
+            enable: false, // معطل لمنع تكرار جرسين في نفس الشاشة
+          },
         });
       });
 
-      // دالة تفعيل الإشعارات عند الضغط على الجرس الملكي
+      // دالة تفعيل الإشعارات المتوافقة مع التحديث الجديد
       function subscribeToNotifications() {
           window.OneSignalDeferred = window.OneSignalDeferred || [];
-          OneSignalDeferred.push(function(OneSignal) {
-              // استدعاء نافذة طلب الإذن (متوافق مع الإصدار 16)
-              OneSignal.Slidedown.promptPush();
+          OneSignalDeferred.push(async function(OneSignal) {
+              try {
+                  await OneSignal.Slidedown.promptPush();
+              } catch(e) {
+                  console.error("حدث خطأ أثناء محاولة فتح نافذة الإذن:", e);
+              }
           });
       }
     </script>
@@ -56,7 +59,7 @@
         .ads-container {
             max-width: 850px;
             margin: 0 auto;
-            position: relative; /* لضمان ترتيب العناصر داخل الصفحة */
+            position: relative;
         }
 
         /* زر العودة للموقع الرئيسي */
@@ -157,9 +160,7 @@
             box-shadow: 0 0 10px rgba(255,0,0,0.5);
         }
 
-        /* ------------------------------------- */
         /* تصميم زر الجرس الملكي العائم */
-        /* ------------------------------------- */
         .royal-bell-btn {
             position: fixed;
             bottom: 30px;
